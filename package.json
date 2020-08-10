@@ -23,6 +23,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-jest": "jest",
     "convert": "npx babel --watch src --out-dir . --presets react-app/prod",
     "eject": "react-scripts eject"
   },
