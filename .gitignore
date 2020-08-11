@@ -27,6 +27,7 @@ target/
 *.iml
 .idea/
 .eclipse
+src/main/java/com/desir/food-theory/sps/servlets/PhotoServlet.java
 
 npm-debug.log*
 yarn-debug.log*
