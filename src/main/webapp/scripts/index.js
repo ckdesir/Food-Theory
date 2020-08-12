@@ -64,11 +64,11 @@ function buildCarouselCaption(photographer, photographerId) {
     `https://pixabay.com/users/${photographer}-${photographerId}/`;
   photographerLink.appendChild(document.createTextNode(photographer));
   const /** HTMLAnchorElement */ pixabayLink = document.createElement('a');
-  pixabayLink.href = 'pixabay.com';
-  pixabayLink.appendChild(document.createTextNode('Pixabay'));
+  pixabayLink.href = 'https://pixabay.com';
+  pixabayLink.appendChild(document.createTextNode('pixabay.com'));
   carouselCaption.appendChild(document.createTextNode('Photograph shot by '));
   carouselCaption.appendChild(photographerLink);
-  carouselCaption.appendChild(document.createTextNode(' on '));
+  carouselCaption.appendChild(document.createTextNode(' from '));
   carouselCaption.appendChild(pixabayLink);
   carouselCaption.appendChild(document.createTextNode('.'));
   return carouselCaption;
