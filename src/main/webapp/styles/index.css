@@ -40,3 +40,11 @@ p {
   width: 30%;
   z-index: 9;
 }
+
+.nav-item.nav-link.active {
+  border-bottom: 3px solid black;
+}
+
+.nav-item.nav-link:hover {
+  border-bottom: 3px solid black;
+}
