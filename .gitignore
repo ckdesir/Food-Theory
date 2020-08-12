@@ -18,6 +18,10 @@ bundle.js
 .env.development.local
 .env.test.local
 .env.production.local
+.classpath
+.factorypath
+.project
+.settings/
 target/
 *.class
 *.jar
@@ -27,7 +31,7 @@ target/
 *.iml
 .idea/
 .eclipse
-src/main/java/com/desir/food-theory/sps/servlets/PhotoServlet.java
+src/main/java/com/food_theory/sps/data/ApiKeys.java
 
 npm-debug.log*
 yarn-debug.log*

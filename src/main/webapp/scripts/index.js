@@ -16,15 +16,16 @@ function main() {
  * on the landing page of the website.
  */
 function addToLandingCarousel() {
-  fetch('/retrieve-photos').then(response => response.json()).then(pictures => {
-    pictures.hits.forEach(pictureInfo => {
+   fetch('/retrieve-photos').then(response => response.json()).then(pictures => {
+    JSON.parse(pictures.toString()).hits.forEach(pictureInfo => {
       buildCarouselDiv(pictureInfo.webformatURL);
     });
   });
 }
 
 /**
- * Builds a carousel image div given a url pointing to an image.
+ * function buildCarouselDiv builds a carousel image div 
+ * given a url pointing to an image.
  * @param {string} urlOfImage 
  */
 function buildCarouselDiv(urlOfImage) {
@@ -34,5 +35,5 @@ function buildCarouselDiv(urlOfImage) {
   carouselImage.src = urlOfImage;
   carouselImage.className = 'd-block w-100';
   carouselDiv.appendChild(carouselImage);
-  $('carousel-home-page').append(carouselDiv);
+  document.getElementById('carousel-home-page').appendChild(carouselDiv);
 }
