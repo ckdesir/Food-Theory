@@ -18,22 +18,60 @@ function main() {
 function addToLandingCarousel() {
    fetch('/retrieve-photos').then(response => response.json()).then(pictures => {
     JSON.parse(pictures.toString()).hits.forEach(pictureInfo => {
-      buildCarouselDiv(pictureInfo.webformatURL);
+      buildCarouselDiv(
+          pictureInfo.largeImageUrl, pictureInfo.user, pictureInfo.user_id
+      );
     });
   });
 }
 
 /**
- * function buildCarouselDiv builds a carousel image div 
+ * function buildCarouselDiv() builds a carousel image div 
  * given a url pointing to an image.
- * @param {string} urlOfImage 
+ * @param {string} urlOfImage
+ * @param {string} photographer
+ * @param {string} photographerId
  */
-function buildCarouselDiv(urlOfImage) {
-  const /**HTMLDivElement*/ carouselDiv = document.createElement('div');
+function buildCarouselDiv(urlOfImage, photographer, photographerId) {
+  const /** HTMLDivElement */ carouselDiv = document.createElement('div');
   carouselDiv.className = 'carousel-item';
-  const /**HTMLImageElement*/ carouselImage = document.createElement('img');
+  const /** HTMLImageElement */ carouselImage = document.createElement('img');
   carouselImage.src = urlOfImage;
   carouselImage.className = 'd-block w-100';
+  const /** HTMLDivElement */ carouselCaptionDiv = 
+      document.createElement('div');
+  carouselCaptionDiv.className = 'carousel-caption d-none d-md-block';
+  carouselCaptionDiv.appendChild(
+      buildCarouselCaption(photographer, photographerId));
   carouselDiv.appendChild(carouselImage);
+  carouselDiv.appendChild(carouselCaptionDiv);
   document.getElementById('carousel-home-page').appendChild(carouselDiv);
 }
+
+/**
+ * function buildCarouselCaption() builds a paragraph element that correctly
+ * attributes the images of the carousel to the name of the photographer passed
+ * in, linking to their portfolio.
+ * @param {string} photographer 
+ * @param {string} photographerId 
+ * @return {HTMLParagraphElement} the carousel caption
+ */
+function buildCarouselCaption(photographer, photographerId) {
+  const /** HTMLParagrahElement */ carouselCaption =
+    document.createElement('p');
+  const /** HTMLAnchorElement */ photographerLink = document.createElement('a');
+  photographerLink.href =
+    `https://pixabay.com/users/${photographer}-${photographerId}/`;
+  photographerLink.appendChild(document.createTextNode(photographer));
+  const /** HTMLAnchorElement */ pixabayLink = document.createElement('a');
+  pixabayLink.href = 'pixabay.com';
+  pixabayLink.appendChild(document.createTextNode('Pixabay'));
+  carouselCaption.appendChild(document.createTextNode('Photograph shot by '));
+  carouselCaption.appendChild(photographerLink);
+  carouselCaption.appendChild(document.createTextNode(' on '));
+  carouselCaption.appendChild(pixabayLink);
+  carouselCaption.appendChild(document.createTextNode('.'));
+  return carouselCaption;
+}
+
+export { addToLandingCarousel, buildCarouselDiv, buildCarouselCaption }
