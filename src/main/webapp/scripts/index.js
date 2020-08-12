@@ -18,8 +18,9 @@ function main() {
 function addToLandingCarousel() {
    fetch('/retrieve-photos').then(response => response.json()).then(pictures => {
     JSON.parse(pictures.toString()).hits.forEach(pictureInfo => {
+      console.log(pictureInfo)
       buildCarouselDiv(
-          pictureInfo.largeImageUrl, pictureInfo.user, pictureInfo.user_id
+        pictureInfo.largeImageURL.substr(0, pictureInfo.largeImageURL.length-8) + '1920.jpg', pictureInfo.user, pictureInfo.user_id
       );
     });
   });
@@ -58,15 +59,15 @@ function buildCarouselDiv(urlOfImage, photographer, photographerId) {
  */
 function buildCarouselCaption(photographer, photographerId) {
   const /** HTMLParagrahElement */ carouselCaption =
-    document.createElement('p');
+      document.createElement('p');
   const /** HTMLAnchorElement */ photographerLink = document.createElement('a');
   photographerLink.href =
-    `https://pixabay.com/users/${photographer}-${photographerId}/`;
+      `https://pixabay.com/users/${photographer}-${photographerId}/`;
   photographerLink.appendChild(document.createTextNode(photographer));
   const /** HTMLAnchorElement */ pixabayLink = document.createElement('a');
   pixabayLink.href = 'https://pixabay.com';
   pixabayLink.appendChild(document.createTextNode('pixabay.com'));
-  carouselCaption.appendChild(document.createTextNode('Photograph shot by '));
+  carouselCaption.appendChild(document.createTextNode('Photograph created by '));
   carouselCaption.appendChild(photographerLink);
   carouselCaption.appendChild(document.createTextNode(' from '));
   carouselCaption.appendChild(pixabayLink);
