@@ -18,9 +18,9 @@ function main() {
 function addToLandingCarousel() {
    fetch('/retrieve-photos').then(response => response.json()).then(pictures => {
     JSON.parse(pictures.toString()).hits.forEach(pictureInfo => {
-      console.log(pictureInfo)
       buildCarouselDiv(
-        pictureInfo.largeImageURL.substr(0, pictureInfo.largeImageURL.length-8) + '1920.jpg', pictureInfo.user, pictureInfo.user_id
+        pictureInfo.largeImageURL.substr(0, pictureInfo.largeImageURL.length-8)
+            + '1920.jpg', pictureInfo.user, pictureInfo.user_id
       );
     });
   });
