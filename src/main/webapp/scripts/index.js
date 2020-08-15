@@ -18,10 +18,11 @@ window.onload = function () { main(); }
 function main() {
   addToLandingCarousel();
   autoComplete = new AutoComplete(AUTOCOMPLETE_TRIGGER, 
-    AUTOCOMPLETE_PLACEHOLDER, AUTOCOMPLETE_RESULTS_LIST, 
-    AUTOCOMPLETE_RESULT_ITEM, AUTOCOMPLETE_NO_RESULTS, 
-    AUTOCOMPLETE_HIGHLIGHT, AUTOCOMPLETE_ON_SELECTION);
+      AUTOCOMPLETE_PLACEHOLDER, AUTOCOMPLETE_RESULTS_LIST, 
+      AUTOCOMPLETE_RESULT_ITEM, AUTOCOMPLETE_NO_RESULTS, 
+      AUTOCOMPLETE_HIGHLIGHT, AUTOCOMPLETE_ON_SELECTION);
   autoComplete.addAutoCompleteEventListener(eventListenerFunction);
+  addEventListenerAutoCompleteResults();
 }
 
 /**
@@ -91,36 +92,42 @@ function buildCarouselCaption(photographer, photographerId) {
 }
 
 /**
- * Toggle event for search input
- * showing & hidding results list onfocus / blur
+ * Toggle event for search input showing & hidding results list onfocus / blur
  */
-["focus", "blur"].forEach(function (eventType) {
-  const resultsList = document.querySelector("#autoComplete_list");
-  document.querySelector("#autoComplete").addEventListener(eventType, function () {
-    if (eventType === "blur") {
-      $('#selections').removeClass("dim");
-      resultsList.style.display = "none";
-    } else if (eventType === "focus") {
-      $('#selections').addClass("dim");
-      resultsList.style.display = "block";
-    }
+function addEventListenerAutoCompleteResults() {
+  ["focus", "blur"].forEach(function (eventType) {
+    const resultsList = document.querySelector("#autoComplete_list");
+    document.querySelector("#autoComplete").addEventListener(eventType, () => {
+      if (eventType === "blur") {
+        $('#selections').removeClass("dim");
+        resultsList.style.display = "none";
+      } else if (eventType === "focus") {
+        $('#selections').addClass("dim");
+        resultsList.style.display = "block";
+      }
+    });
   });
-});
+}
 
 function buildSelectionItem() {
   throw new Error('Unimplemented');
 }
 
-function eventListenerFunction(event) {
+/**
+ * 
+ * @param {CustomEvent} customEvent 
+ */
+function eventListenerFunction(customEvent) {
   autoComplete.setData({
     src: async function () {
-      const source = await fetch(`https://api.datamuse.com/sug?s=${event.detail.input}`);
-      console.log(source);
+      const source = 
+          await fetch(
+              `https://api.datamuse.com/sug?s=${customEvent.detail.input}`);
       const data = await source.json();
       return data;
     },
     key: ["word"],
-    cache: false
+    cache: true
   });
 }
 
