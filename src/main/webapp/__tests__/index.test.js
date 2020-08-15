@@ -8,8 +8,8 @@ afterEach(() => {
 test('buildCarouselCaption', () => {
   document.body.innerHTML = '';
   const expectedInnerHTML = 
-      'Photograph created by <a href="https://pixabay.com/users/Josch13-48777/">'+
-      'Josch13</a> from <a href="https://pixabay.com">pixabay.com</a>.';
+      'Image by <a href="https://pixabay.com/users/Josch13-48777/">'+
+      'Josch13</a> on <a href="https://pixabay.com">Pixabay</a>.';
   expect(indexScript.buildCarouselCaption('Josch13', '48777').innerHTML)
       .toEqual(expectedInnerHTML);
 })
