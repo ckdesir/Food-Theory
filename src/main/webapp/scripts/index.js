@@ -1,6 +1,7 @@
+import { AUTOCOMPLETE_TRIGGER, AUTOCOMPLETE_PLACEHOLDER, AUTOCOMPLETE_RESULTS_LIST, AUTOCOMPLETE_RESULT_ITEM, AUTOCOMPLETE_NO_RESULTS, AUTOCOMPLETE_HIGHLIGHT, AUTOCOMPLETE_ON_SELECTION } from "./autocompleteconstants";
 
 /**
- * @type {autoComplete}
+ * @type {AutoComplete}
  */
 let autoComplete;
 
@@ -15,8 +16,12 @@ window.onload = function () { main(); }
  * function main() adds pictures to the carousel.
  */
 function main() {
-  initializeAutoComplete()
   addToLandingCarousel();
+  autoComplete = new AutoComplete(AUTOCOMPLETE_TRIGGER, 
+    AUTOCOMPLETE_PLACEHOLDER, AUTOCOMPLETE_RESULTS_LIST, 
+    AUTOCOMPLETE_RESULT_ITEM, AUTOCOMPLETE_NO_RESULTS, 
+    AUTOCOMPLETE_HIGHLIGHT, AUTOCOMPLETE_ON_SELECTION);
+  autoComplete.addAutoCompleteEventListener(eventListenerFunction);
 }
 
 /**
@@ -85,60 +90,6 @@ function buildCarouselCaption(photographer, photographerId) {
   return carouselCaption;
 }
 
-function initializeAutoComplete() {
-  autoCompletejs = new autoComplete({
-    data: {
-      src: async function () {
-        document.querySelector("#autoComplete").setAttribute("placeholder", "Loading...");
-        const query = document.querySelector("#autoComplete").value;
-        const source = await fetch(`https://api.datamuse.com/sug?s=${query}`);
-        const data = await source.json();
-        return data;
-      },
-      key: ["word"],
-    },
-    trigger: {
-      event: ["input", "focusin", "focusout"],
-      condition: function (query) {
-        query.length > this.threshold;
-      },
-    },
-    placeHolder: "Enter foods or cuisines!",
-    selector: "#autoComplete",
-    searchEngine: "strict",
-    highlight: true,
-    maxResults: 7,
-    resultsList: {
-      render: true,
-      container: function (source) {
-        source.setAttribute("id", "autoComplete_list");
-      },
-      element: "ul",
-      destination: document.querySelector("#autoComplete"),
-      position: "afterend",
-    },
-    resultItem: {
-      content: function (data, source) {
-        source.innerHTML = data.match;
-      },
-      element: "li",
-    },
-    noResults: function () {
-      const result = document.createElement("li");
-      result.setAttribute("class", "no_result");
-      result.setAttribute("tabindex", "1");
-      result.innerHTML = "Press enter to add to list anyways!";
-      document.querySelector("#autoComplete_list").appendChild(result);
-    },
-    onSelection: function (feedback) {
-      document.querySelector("#autoComplete").blur();
-      const selection = feedback.selection.value.word;
-      buildSelectionItem(selecion);
-      document.querySelector("#autoComplete").value = '';
-    },
-  });
-}
-
 /**
  * Toggle event for search input
  * showing & hidding results list onfocus / blur
@@ -158,6 +109,19 @@ function initializeAutoComplete() {
 
 function buildSelectionItem() {
   throw new Error('Unimplemented');
+}
+
+function eventListenerFunction(event) {
+  autoComplete.setData({
+    src: async function () {
+      const source = await fetch(`https://api.datamuse.com/sug?s=${event.detail.input}`);
+      console.log(source);
+      const data = await source.json();
+      return data;
+    },
+    key: ["word"],
+    cache: false
+  });
 }
 
 export { addToLandingCarousel, buildCarouselDiv, buildCarouselCaption }
