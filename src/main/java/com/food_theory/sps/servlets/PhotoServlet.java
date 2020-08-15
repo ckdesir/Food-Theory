@@ -16,7 +16,7 @@ public class PhotoServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String pixabayResponse = Get.get(
-      "https://pixabay.com/api/?key="+ApiKeys.PIXABAY_KEY+"&lang=en&image_type=photo&orientation=horizontal&category=food&safesearch=true&per_page=40&q=restaurant+food+dinner"
+      "https://pixabay.com/api/?key="+ApiKeys.PIXABAY_KEY+"&lang=en&image_type=photo&orientation=vertical&category=food&safesearch=true&per_page=40&q=restaurant+food+dinner"
     );
     Gson gson = new Gson();
     String json = gson.toJson(pixabayResponse);

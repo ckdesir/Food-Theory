@@ -4,7 +4,7 @@
 a,
 a:focus,
 a:hover {
-  color: #fff;
+  /* color: #fff; */
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
 }
@@ -19,32 +19,51 @@ a:hover {
 
 .btn-xl {
   border-radius: 0.3rem;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 2.0rem;
-  font-weight: 600;
   line-height: 1.5;
   padding: 0.5rem 1rem;
 }
 
-p {
+p, button {
   color: #fff;
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.5rem;
+  font-size: 15px;
   font-weight: 600; 
 }
 
 #greeting-message {
   background-color: rgba(38, 38, 38, .9);
+  height: 20%;
   padding: 2rem;
   position: absolute;
   width: 30%;
   z-index: 9;
+
 }
 
-.nav-item.nav-link.active {
+.picture-caption {
+  background-color: rgba(38, 38, 38, .45);
+}
+
+#active {
   border-bottom: 3px solid black;
 }
 
-.nav-item.nav-link:hover {
+.hover-underline:hover {
   border-bottom: 3px solid black;
+}
+
+.dim {
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .3);
+  pointer-events: none;
+}
+
+label[for="autoComplete"] { 
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
