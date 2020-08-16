@@ -1,3 +1,5 @@
+import autoComplete from 'https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js';
+
 /**
  * The AutoComplete class essentially wraps the autoComplete object of the 
  * autoComplete.js library. Includes additional functionality like adding 

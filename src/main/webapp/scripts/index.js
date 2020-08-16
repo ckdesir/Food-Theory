@@ -1,4 +1,4 @@
-import { AUTOCOMPLETE_TRIGGER, AUTOCOMPLETE_PLACEHOLDER, AUTOCOMPLETE_RESULTS_LIST, AUTOCOMPLETE_RESULT_ITEM, AUTOCOMPLETE_NO_RESULTS, AUTOCOMPLETE_HIGHLIGHT, AUTOCOMPLETE_ON_SELECTION } from "./autocompleteconstants";
+import * as autoCompleteConstants from './autocompleteconstants.js';
 
 /**
  * @type {AutoComplete}
@@ -13,16 +13,21 @@ let autoComplete;
 window.onload = function () { main(); }
 
 /**
- * function main() adds pictures to the carousel.
+ * function main() adds pictures to the carousel and initializes an AutoComplete
+ * object.
  */
 function main() {
   addToLandingCarousel();
-  autoComplete = new AutoComplete(AUTOCOMPLETE_TRIGGER, 
-      AUTOCOMPLETE_PLACEHOLDER, AUTOCOMPLETE_RESULTS_LIST, 
-      AUTOCOMPLETE_RESULT_ITEM, AUTOCOMPLETE_NO_RESULTS, 
-      AUTOCOMPLETE_HIGHLIGHT, AUTOCOMPLETE_ON_SELECTION);
+  autoComplete = new AutoComplete(
+      autoCompleteConstants.AUTOCOMPLETE_TRIGGER, 
+      autoCompleteConstants.AUTOCOMPLETE_PLACEHOLDER, 
+      autoCompleteConstants.AUTOCOMPLETE_RESULTS_LIST, 
+      autoCompleteConstants.AUTOCOMPLETE_RESULT_ITEM, 
+      autoCompleteConstants.AUTOCOMPLETE_NO_RESULTS, 
+      autoCompleteConstants.AUTOCOMPLETE_HIGHLIGHT, 
+      autoCompleteConstants.AUTOCOMPLETE_ON_SELECTION);
   autoComplete.addAutoCompleteEventListener(eventListenerFunction);
-  addEventListenerAutoCompleteResults();
+  addKeyUpEventListenerAutoComplete();
 }
 
 /**
@@ -33,10 +38,24 @@ function addToLandingCarousel() {
   fetch('/retrieve-photos').then(response => response.json()).then(pictures => {
     JSON.parse(pictures.toString()).hits.forEach(pictureInfo => {
       buildCarouselDiv(pictureInfo.largeImageURL.substr(
-          0, pictureInfo.largeImageURL.length-8) + '1920.jpg', pictureInfo.user,
-          pictureInfo.user_id, pictureInfo.tags
+        0, pictureInfo.largeImageURL.length - 8) + '1920.jpg', pictureInfo.user,
+        pictureInfo.user_id, pictureInfo.tags
       );
     });
+  });
+}
+
+/**
+ * function addKeyUpEventListenerAutoComplete() detecs when the enter key is 
+ * released on the autoComplete input, building a tag of whatever was in the 
+ * input at the time. 
+ */
+function addKeyUpEventListenerAutoComplete() {
+  $('#autoComplete').on('keyup', (keyboardEvent) => {
+    if ((keyboardEvent.key === 'Enter' || keyboardEvent.keyCode === 13) &&
+        keyboardEvent.target.value) {
+        autoCompleteConstants.BUILD_SELECTION_ITEM(keyboardEvent.target.value);
+    }
   });
 }
 
@@ -92,29 +111,8 @@ function buildCarouselCaption(photographer, photographerId) {
 }
 
 /**
- * Toggle event for search input showing & hidding results list onfocus / blur
- */
-function addEventListenerAutoCompleteResults() {
-  ["focus", "blur"].forEach(function (eventType) {
-    const resultsList = document.querySelector("#autoComplete_list");
-    document.querySelector("#autoComplete").addEventListener(eventType, () => {
-      if (eventType === "blur") {
-        $('#selections').removeClass("dim");
-        resultsList.style.display = "none";
-      } else if (eventType === "focus") {
-        $('#selections').addClass("dim");
-        resultsList.style.display = "block";
-      }
-    });
-  });
-}
-
-function buildSelectionItem() {
-  throw new Error('Unimplemented');
-}
-
-/**
- * 
+ * Uses the DataMuse api to suggest words based off of the input of the user,
+ * refreshing the data of autoComplete.
  * @param {CustomEvent} customEvent 
  */
 function eventListenerFunction(customEvent) {
@@ -127,7 +125,7 @@ function eventListenerFunction(customEvent) {
       return data;
     },
     key: ["word"],
-    cache: true
+    cache: false
   });
 }
 
