@@ -1,10 +1,23 @@
 import * as autoCompleteConstants from './autocompleteconstants.js';
+import { AutoComplete } from './autocomplete.js';
 
 /**
+ * An object of AutoComplete, essentially wraps the autoComplete object of the
+ * autoComplete.js library. autoComplete enables users to quickly find and 
+ * select from a populated list of values as they type, leveraging searching and
+ * filtering. More information here:
+ * https://tarekraafat.github.io/autoComplete.js/#/?id=api-configuration.
  * @type {AutoComplete}
  */
-let autoComplete;
-
+const autoComplete = new AutoComplete(
+  autoCompleteConstants.AUTOCOMPLETE_TRIGGER,
+  autoCompleteConstants.AUTOCOMPLETE_PLACEHOLDER,
+  autoCompleteConstants.AUTOCOMPLETE_RESULTS_LIST,
+  autoCompleteConstants.AUTOCOMPLETE_RESULT_ITEM,
+  autoCompleteConstants.AUTOCOMPLETE_NO_RESULTS,
+  autoCompleteConstants.AUTOCOMPLETE_HIGHLIGHT,
+  autoCompleteConstants.AUTOCOMPLETE_ON_SELECTION
+);
 
 /**
  * This waits until the webpage loads and then it calls the
@@ -111,7 +124,7 @@ function buildCarouselCaption(photographer, photographerId) {
 }
 
 /**
- * Uses the DataMuse api to suggest words based off of the input of the user,
+ * Uses the Datamuse api to suggest words based off of the input of the user,
  * refreshing the data of autoComplete.
  * @param {CustomEvent} customEvent 
  */

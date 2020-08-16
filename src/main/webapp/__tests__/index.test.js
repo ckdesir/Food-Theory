@@ -1,18 +1,21 @@
 import * as indexScript from '../scripts/index';
+import autoComplete from '../scripts/autocompletelibrary';
 import fetch from 'jest-fetch-mock';
+jest.mock('../scripts/autocompletelibrary');
 
 afterEach(() => {
   jest.clearAllMocks();
+  document.body.innerHTML = '';
 });
 
 test('buildCarouselCaption', () => {
-  document.body.innerHTML = '';
   const expectedInnerHTML = 
       'Image by <a href="https://pixabay.com/users/Josch13-48777/">'+
       'Josch13</a> on <a href="https://pixabay.com">Pixabay</a>.';
   expect(indexScript.buildCarouselCaption('Josch13', '48777').innerHTML)
       .toEqual(expectedInnerHTML);
-})
+});
+
 test('buildCarouselDiv', () => {
   document.body.innerHTML = '<div id="carousel-home-page"></div>';
   const carouselContainer = document.getElementById('carousel-home-page');

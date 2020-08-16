@@ -17,7 +17,7 @@ const AUTOCOMPLETE_PLACEHOLDER = 'Enter foods or cuisines!';
  */
 const AUTOCOMPLETE_TRIGGER = {
   event: ['input', 'focusin', 'focusout'],
-  condition: function (query) {
+  condition: query => {
     return query.length > this.threshold && query !== ' ';
   }
 };
@@ -28,7 +28,7 @@ const AUTOCOMPLETE_TRIGGER = {
  */
 const AUTOCOMPLETE_RESULTS_LIST = {
   render: true,
-  container: function (source) {
+  container: source => {
     source.setAttribute('id', 'autoComplete_list');
   },
   element: 'ul',
@@ -41,7 +41,7 @@ const AUTOCOMPLETE_RESULTS_LIST = {
  * @type {object}
  */
 const AUTOCOMPLETE_RESULT_ITEM = {
-  content: function (data, source) {
+  content: (data, source) => {
     source.innerHTML = data.match;
   },
   element: 'li',
@@ -75,7 +75,9 @@ const AUTOCOMPLETE_ON_SELECTION = (feedback) => {
  * @param {string} item 
  */
 const BUILD_SELECTION_ITEM = (item) => {
-  throw new Error('Unimplemented');
+  // <span class="badge badge-dark align-self-center justify-content-center p-2 m-2">Fettucine Alfredo
+  //       <i class="fas fa-times-circle"></i>
+  // </span>
 };
 
 export { AUTOCOMPLETE_HIGHLIGHT, AUTOCOMPLETE_NO_RESULTS, 

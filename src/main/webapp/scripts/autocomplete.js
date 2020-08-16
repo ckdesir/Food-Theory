@@ -1,4 +1,4 @@
-import autoComplete from 'https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js';
+import autoComplete from './autocompletelibrary.js';
 
 /**
  * The AutoComplete class essentially wraps the autoComplete object of the 
@@ -54,7 +54,7 @@ class AutoComplete {
     onSelection = () => {},
     maxResults = 5,
     data = {
-      src: {}
+      src: []
     },
     selector = '#autoComplete',
     threshold = 0,
@@ -76,6 +76,10 @@ class AutoComplete {
     });
   }
 
+  /**
+   * Sets the value of autoComplete's data field.
+   * @param {Object} data 
+   */
   setData(data) {
     this.autoComplete_.data = data;
   }
@@ -86,6 +90,8 @@ class AutoComplete {
    */
   addAutoCompleteEventListener(eventListenerFunction) {
     document.querySelector(this.autoComplete_.selector).
-        addEventListener("autoComplete", eventListenerFunction);
+        addEventListener('autoComplete', eventListenerFunction);
   }
 }
+
+export { AutoComplete };
