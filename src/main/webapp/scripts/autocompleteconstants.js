@@ -72,12 +72,44 @@ const AUTOCOMPLETE_ON_SELECTION = (feedback) => {
  * @param {string} item 
  */
 const BUILD_SELECTION_ITEM = (item) => {
-  // <span class="badge badge-dark align-self-center justify-content-center p-2 m-2">Fettucine Alfredo
-  //       <i class="fas fa-times-circle"></i>
-  // </span>
+  const badge = document.createElement('span');
+  badge.className = 
+      'badge badge-dark align-self-center justify-content-center p-2 m-2';
+  badge.innerText = item + ' ';
+  const deleteIcon = document.createElement('i');
+  deleteIcon.className = 'fas fa-times-circle';
+  deleteIcon.addEventListener('click', REMOVE_SELECTION_ITEM);
+  badge.appendChild(deleteIcon);
+  document.getElementById('selectionContainer').appendChild(badge);
 };
+
+/**
+ * Removes the selection item badge from its container.
+ * @param {MouseEvent} mouseEvent the mouseEvent
+ *    that captures what was clicked on
+ */
+const REMOVE_SELECTION_ITEM = (mouseEvent) => {
+  document.getElementById('selectionContainer')
+      .removeChild(mouseEvent.target.parentNode);
+}
+
+/**
+ * Detecs when the enter key is 
+ * released on the autoComplete input, building a tag of whatever was in the 
+ * input at the time. 
+ */
+const ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE = () => {
+  $('#autoComplete').on('keyup', (keyboardEvent) => {
+    if ((keyboardEvent.key === 'Enter' || keyboardEvent.keyCode === 13) &&
+      keyboardEvent.target.value) {
+      BUILD_SELECTION_ITEM(keyboardEvent.target.value);
+      document.querySelector('#autoComplete').value = '';
+    }
+  });
+}
 
 export { AUTOCOMPLETE_HIGHLIGHT, AUTOCOMPLETE_NO_RESULTS, 
   AUTOCOMPLETE_ON_SELECTION, AUTOCOMPLETE_PLACEHOLDER, BUILD_SELECTION_ITEM,
-  AUTOCOMPLETE_RESULTS_LIST, AUTOCOMPLETE_RESULT_ITEM, AUTOCOMPLETE_TRIGGER }
+  AUTOCOMPLETE_RESULTS_LIST, AUTOCOMPLETE_RESULT_ITEM, AUTOCOMPLETE_TRIGGER,
+  ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE }
 

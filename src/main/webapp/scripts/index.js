@@ -32,7 +32,7 @@ window.onload = function () { main(); }
 function main() {
   addToLandingCarousel();
   autoComplete.addAutoCompleteEventListener(eventListenerFunction);
-  addKeyUpEventListenerAutoComplete();
+  autoCompleteConstants.ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE();
 }
 
 /**
@@ -46,20 +46,6 @@ function addToLandingCarousel() {
           pictureInfo.user_id, pictureInfo.tags
       );
     });
-  });
-}
-
-/**
- * function addKeyUpEventListenerAutoComplete() detecs when the enter key is 
- * released on the autoComplete input, building a tag of whatever was in the 
- * input at the time. 
- */
-function addKeyUpEventListenerAutoComplete() {
-  $('#autoComplete').on('keyup', (keyboardEvent) => {
-    if ((keyboardEvent.key === 'Enter' || keyboardEvent.keyCode === 13) &&
-        keyboardEvent.target.value) {
-        autoCompleteConstants.BUILD_SELECTION_ITEM(keyboardEvent.target.value);
-    }
   });
 }
 
@@ -133,5 +119,4 @@ function eventListenerFunction(customEvent) {
   });
 }
 
-export { addToLandingCarousel, buildCarouselDiv, buildCarouselCaption, 
-addKeyUpEventListenerAutoComplete }
+export { addToLandingCarousel, buildCarouselDiv, buildCarouselCaption }
