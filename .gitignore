@@ -7,10 +7,12 @@
 
 # testing
 /coverage
+setup-jest.js
 
 # production
 /build
 bundle.js
+pom.xml
 
 # misc
 .DS_Store
