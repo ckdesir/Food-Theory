@@ -1,7 +1,5 @@
 import * as indexScript from '../scripts/index';
-import autoComplete from '../scripts/autocompletelibrary';
 import fetch from 'jest-fetch-mock';
-jest.mock('../scripts/autocompletelibrary');
 
 afterEach(() => {
   jest.clearAllMocks();

@@ -1,18 +1,13 @@
-import autoComplete from '../scripts/autocompletelibrary';
 import { AutoComplete } from '../scripts/autocomplete';
 import * as autoCompleteConstants from '../scripts/autocompleteconstants';
-jest.mock('../scripts/autocompletelibrary');
 
-beforeEach(() => {
-  autoComplete.mockClear();
-  autoComplete.mockImplementation(() => {
-    return {
-      data: {
-        src: []
-      },
-      selector: '#autoComplete'
-    };
-  });
+jest.mock('@tarekraafat/autocomplete.js', () => {
+  return {
+    data: {
+      src: []
+    },
+    selector: '#autoComplete'
+  };
 });
 
 const expectedAutoCompleteObject = { 

@@ -68,6 +68,20 @@ const AUTOCOMPLETE_ON_SELECTION = (feedback) => {
 };
 
 /**
+ * Detects when the enter key is released on the autoComplete input, 
+ * building a selection item of whatever was in the input at the time. 
+ */
+const ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE = () => {
+  $('#autoComplete').on('keyup', (keyboardEvent) => {
+    if ((keyboardEvent.key === 'Enter' || keyboardEvent.keyCode === 13) &&
+      keyboardEvent.target.value) {
+      BUILD_SELECTION_ITEM(keyboardEvent.target.value);
+      document.querySelector('#autoComplete').value = '';
+    }
+  });
+}
+
+/**
  * Builds a badge of the given item.
  * @param {string} item 
  */
@@ -93,23 +107,8 @@ const REMOVE_SELECTION_ITEM = (mouseEvent) => {
       .removeChild(mouseEvent.target.parentNode);
 }
 
-/**
- * Detecs when the enter key is 
- * released on the autoComplete input, building a tag of whatever was in the 
- * input at the time. 
- */
-const ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE = () => {
-  $('#autoComplete').on('keyup', (keyboardEvent) => {
-    if ((keyboardEvent.key === 'Enter' || keyboardEvent.keyCode === 13) &&
-      keyboardEvent.target.value) {
-      BUILD_SELECTION_ITEM(keyboardEvent.target.value);
-      document.querySelector('#autoComplete').value = '';
-    }
-  });
-}
-
 export { AUTOCOMPLETE_HIGHLIGHT, AUTOCOMPLETE_NO_RESULTS, 
   AUTOCOMPLETE_ON_SELECTION, AUTOCOMPLETE_PLACEHOLDER, BUILD_SELECTION_ITEM,
   AUTOCOMPLETE_RESULTS_LIST, AUTOCOMPLETE_RESULT_ITEM, AUTOCOMPLETE_TRIGGER,
-  ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE }
+  ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE, REMOVE_SELECTION_ITEM }
 
