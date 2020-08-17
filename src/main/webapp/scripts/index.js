@@ -31,14 +31,6 @@ window.onload = function () { main(); }
  */
 function main() {
   addToLandingCarousel();
-  autoComplete = new AutoComplete(
-      autoCompleteConstants.AUTOCOMPLETE_TRIGGER, 
-      autoCompleteConstants.AUTOCOMPLETE_PLACEHOLDER, 
-      autoCompleteConstants.AUTOCOMPLETE_RESULTS_LIST, 
-      autoCompleteConstants.AUTOCOMPLETE_RESULT_ITEM, 
-      autoCompleteConstants.AUTOCOMPLETE_NO_RESULTS, 
-      autoCompleteConstants.AUTOCOMPLETE_HIGHLIGHT, 
-      autoCompleteConstants.AUTOCOMPLETE_ON_SELECTION);
   autoComplete.addAutoCompleteEventListener(eventListenerFunction);
   addKeyUpEventListenerAutoComplete();
 }
@@ -50,9 +42,8 @@ function main() {
 function addToLandingCarousel() {
   fetch('/retrieve-photos').then(response => response.json()).then(pictures => {
     JSON.parse(pictures.toString()).hits.forEach(pictureInfo => {
-      buildCarouselDiv(pictureInfo.largeImageURL.substr(
-        0, pictureInfo.largeImageURL.length - 8) + '1920.jpg', pictureInfo.user,
-        pictureInfo.user_id, pictureInfo.tags
+      buildCarouselDiv(pictureInfo.largeImageURL, pictureInfo.user, 
+          pictureInfo.user_id, pictureInfo.tags
       );
     });
   });
@@ -82,14 +73,14 @@ function addKeyUpEventListenerAutoComplete() {
  */
 function buildCarouselDiv(urlOfImage, photographer, photographerId, imageTags) {
   const /** HTMLDivElement */ carouselDiv = document.createElement('div');
-  carouselDiv.className = 'carousel-item';
+  carouselDiv.className = 'container carousel-item';
   const /** HTMLImageElement */ carouselImage = document.createElement('img');
   carouselImage.src = urlOfImage;
   carouselImage.alt = imageTags
   carouselImage.className = 'd-block w-100 h-100';
   const /** HTMLDivElement */ carouselCaptionDiv = 
       document.createElement('div');
-  carouselCaptionDiv.className = 'carousel-caption d-none d-md-block';
+  carouselCaptionDiv.className = 'carousel-caption picture-caption';
   carouselCaptionDiv.appendChild(
       buildCarouselCaption(photographer, photographerId));
   carouselDiv.appendChild(carouselImage);
@@ -142,4 +133,5 @@ function eventListenerFunction(customEvent) {
   });
 }
 
-export { addToLandingCarousel, buildCarouselDiv, buildCarouselCaption }
+export { addToLandingCarousel, buildCarouselDiv, buildCarouselCaption, 
+addKeyUpEventListenerAutoComplete }

@@ -24,7 +24,7 @@ test('buildCarouselDiv', () => {
   expectedPhotographerLink.appendChild(document.createTextNode('Josch13'));
   indexScript.buildCarouselDiv(
       'https://pixabay.com/get/ed6a99fd0a76647_1280.jpg', 'Josch13', '48777');
-  expect(carouselContainer.children[0].className).toEqual('carousel-item');
+  expect(carouselContainer.children[0].className).toEqual('container carousel-item');
   expect(carouselContainer.children[0].lastElementChild.querySelector('a')).
       toEqual(expectedPhotographerLink);
 });

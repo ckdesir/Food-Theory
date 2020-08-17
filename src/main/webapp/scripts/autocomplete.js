@@ -1,5 +1,3 @@
-import autoComplete from './autocompletelibrary.js';
-
 /**
  * The AutoComplete class essentially wraps the autoComplete object of the 
  * autoComplete.js library. Includes additional functionality like adding 

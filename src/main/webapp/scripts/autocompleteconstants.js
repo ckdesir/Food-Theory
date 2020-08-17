@@ -16,10 +16,7 @@ const AUTOCOMPLETE_PLACEHOLDER = 'Enter foods or cuisines!';
  * @type {Object}
  */
 const AUTOCOMPLETE_TRIGGER = {
-  event: ['input', 'focusin', 'focusout'],
-  condition: query => {
-    return query.length > this.threshold && query !== ' ';
-  }
+  event: ['input', 'focusin', 'focusout']
 };
 
 /**

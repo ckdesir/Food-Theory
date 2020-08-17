@@ -1,17 +1,10 @@
-/* 
- * Links 
- */
 a,
 a:focus,
 a:hover {
-  /* color: #fff; */
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
 }
 
-/*
- * Base structure
- */
 .base {
   background-color: #fff;
   height: 100%;
@@ -23,7 +16,8 @@ a:hover {
   padding: 0.5rem 1rem;
 }
 
-p, button {
+p, 
+button {
   color: #fff;
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
@@ -37,7 +31,6 @@ p, button {
   position: absolute;
   width: 30%;
   z-index: 9;
-
 }
 
 .picture-caption {
