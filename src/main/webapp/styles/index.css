@@ -5,9 +5,11 @@ a:hover {
   font-weight: 600;
 }
 
-.base {
+html,
+body {
   background-color: #fff;
   height: 100%;
+  width: 100%;
 }
 
 .btn-xl {
@@ -30,7 +32,7 @@ button {
   padding: 2rem;
   position: absolute;
   width: 100%;
-  z-index: 9;
+  z-index: 8;
 }
 
 .picture-caption {
@@ -64,6 +66,15 @@ label[for="autoComplete"] {
   width: auto;
 }
 
+#selections {
+  background-color: white;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .3);
+  display: none;
+  position: absolute;
+  width: 100%;
+  z-index: 9;
+}
+
 #selectionContainer {
   overflow-x: auto;
 }
@@ -86,5 +97,14 @@ label[for="autoComplete"] {
 
   a {
     font-size: 20px;
+  }
+
+  #selections {
+    background-color: white;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .3);
+    display: none;
+    position: absolute;
+    width: 25%;
+    z-index: 9;
   }
 }

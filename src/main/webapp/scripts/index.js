@@ -33,6 +33,14 @@ function main() {
   addToLandingCarousel();
   autoComplete.addAutoCompleteEventListener(eventListenerFunction);
   autoCompleteConstants.ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE();
+  $('#greeting-message-button').click(() => {
+    $('#greeting-message').hide();
+    $('#selections').show();
+  });
+  $('#selections-close').click(() => {
+    $('#selections').hide();
+    $('#greeting-message').show();
+  });
 }
 
 /**
