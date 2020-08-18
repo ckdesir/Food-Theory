@@ -20,28 +20,26 @@ p,
 button {
   color: #fff;
   font-family: 'Open Sans', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600; 
 }
 
 #greeting-message {
   background-color: rgba(38, 38, 38, .9);
-  height: 20%;
+  height: auto;
   padding: 2rem;
   position: absolute;
-  width: 30%;
+  width: 100%;
   z-index: 9;
 }
 
 .picture-caption {
-  background-color: rgba(38, 38, 38, .45);
+  padding: 5px 0 5px 0;
+  background-color: rgba(0, 0, 0, .8);
 }
 
-#active {
-  border-bottom: 3px solid black;
-}
-
-.hover-underline:hover {
+span.active,
+span.non-active:hover {
   border-bottom: 3px solid black;
 }
 
@@ -61,11 +59,32 @@ label[for="autoComplete"] {
   width: 1px;
 }
 
+#brandLogo {
+  height: 45px;
+  width: auto;
+}
+
 #selectionContainer {
   overflow-x: auto;
 }
 
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {  
- 
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  #brandLogo {
+    height: 75px;
+    width: auto;
+  }
+
+  p, 
+  #signIn,
+  #greeting-message-button {
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 600; 
+  }
+
+  a {
+    font-size: 20px;
+  }
 }

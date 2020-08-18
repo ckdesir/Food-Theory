@@ -16,45 +16,46 @@
     <link rel="stylesheet" href="./styles/index.css">
   </head>
   <body class="text-center base">
-    <nav class="navbar navbar-toggleable-md">
-      <div class="container">
-        <div class="dropdown">
-          <span class="dropdown-toggle" id="dropdownMenuToggle" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
+    <header>
+      <nav class="navbar navbar-expand-md">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="images/full-logo.png" id="brandLogo" alt="Logo for Food Theory">
+          </a>
+          <span class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
           </span>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuToggle">
+          <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link text-dark active" href="index.html"><span id="active">Home</span></a>
+                <a class="nav-link text-dark active" href="index.html"><span class="active">Home</span><span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-dark" href="#"><span class="hover-underline">About</span></a>
+                <a class="nav-link text-dark" href="#"><span class="non-active">About</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-dark" href="#"><span class="hover-underline">Contact</span></a>
+                <a class="nav-link text-dark" href="#"><span class="non-active">Contact</span></a>
               </li>
             </ul>
+            <button type="button" class="btn btn-dark navbar-right" id="signIn" aria-label="Sign In">
+              <i class="fas fa-sign-in-alt"></i> Sign In</button>
           </div>
         </div>
-        <a class="navbar-brand" href="#">
-          <img src="images/full-logo.png" width="auto" height="50" alt="Logo for Food Theory">
-        </a>
-        <button type="button" class="btn btn-dark navbar-right">
-          <i class="fas fa-sign-in-alt"></i> Sign In</button>
-      </div>
-    </nav>
+      </nav>
+    </header> 
     <div class="inner d-flex align-items-center justify-content-center">
       <div class="container" id="greeting-message">
         <p>Looking for a place to eat? A person of many tastes? With a group of friends? Food
           Theory can find you resturants to eat at, tailored to your specifications!</p>
-        <button type="button" class="btn btn-dark btn-xl">Get Started</button>
+        <button type="button" class="btn btn-dark btn-xl" id="greeting-message-button">Get Started</button>
       </div>
       <div class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" id="carousel-home-page">
           <div class="container carousel-item active">
             <img class="d-block w-100 h-100" src="./images/Jongno-2-ga.jpg"
               alt="A picture of Jongno 2-ga street in South Korea">
-            <div class="carousel-caption picture-caption">
+            <div class="picture-caption">
               <p>Image by 
                 <a href="https://pixabay.com/users/stocksnap-894430/">Markus Winkler</a>
                 from <a href="https://pixabay.com">Pixabay</a>.

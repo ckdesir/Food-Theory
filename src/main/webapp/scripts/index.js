@@ -66,7 +66,7 @@ function buildCarouselDiv(urlOfImage, photographer, photographerId, imageTags) {
   carouselImage.className = 'd-block w-100 h-100';
   const /** HTMLDivElement */ carouselCaptionDiv = 
       document.createElement('div');
-  carouselCaptionDiv.className = 'carousel-caption picture-caption';
+  carouselCaptionDiv.className = 'picture-caption';
   carouselCaptionDiv.appendChild(
       buildCarouselCaption(photographer, photographerId));
   carouselDiv.appendChild(carouselImage);
