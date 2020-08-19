@@ -53,6 +53,9 @@ const UI_CONFIG = (signInSuccessUrl) => {
       },
       {
         provider: firebase.auth.TwitterAuthProvider.PROVIDER_ID
+      },
+      {
+        provider: firebase.auth.GithubAuthProvider.PROVIDER_ID
       }
     ],
     tosUrl: 'tos.html',

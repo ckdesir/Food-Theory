@@ -25,16 +25,17 @@ const autoComplete = new AutoComplete(
  * anonymous function, which calls main.
  */
 window.onload = function () {
-  firebase.initializeApp(firebaseConstants.FIREBASE_CONFIG);
-  initApp();
   main(); 
 }
 
 /**
- * function main() adds pictures to the carousel and initializes an AutoComplete
- * object.
+ * function main() adds pictures to the carousel, initializes an AutoComplete
+ * object, prepares the UI for signing in, adds onClickListeners to
+ * some elements on the main page, and detects whether a user is signed in;
  */
 function main() {
+  firebase.initializeApp(firebaseConstants.FIREBASE_CONFIG);
+  detectSignedInUser();
   firebaseConstants.INITALIZE_SIGN_IN();
   addToLandingCarousel();
   autoComplete.addAutoCompleteEventListener(eventListenerFunction);
@@ -43,11 +44,11 @@ function main() {
 }
 
 /**
- * function initApp() adds an observer for changes to the user's sign-in state. 
+ * function detectSignedInUser() adds an observer for changes to the user's sign-in state.
  * Updates interface in the case where a user is signed into the 
  * website.
  */
-function initApp() {
+function detectSignedInUser() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
       $('#sign-out').show();
@@ -62,7 +63,6 @@ function initApp() {
       $('#profile-display').append(profilePicture);
       $('#profile-display').append(profileLink);
       $('#profile-display').show();
-    } else {
     }
   });
 }
