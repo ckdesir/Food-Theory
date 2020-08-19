@@ -27,7 +27,7 @@ button {
 }
 
 #greeting-message {
-  background-color: rgba(38, 38, 38, .9);
+  background-color: rgba(38, 38, 38, .65);
   height: auto;
   padding: 2rem;
   z-index: 7;
@@ -36,11 +36,6 @@ button {
 .picture-caption {
   padding: 5px 0 5px 0;
   background-color: rgba(0, 0, 0, .8);
-}
-
-.dim {
-  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .3);
-  pointer-events: none;
 }
 
 label[for="autoComplete"] { 

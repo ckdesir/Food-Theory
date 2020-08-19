@@ -3,19 +3,38 @@ span.non-active:hover {
   border-bottom: 3px solid black;
 }
 
-#brand-logo {
+#brand-logo,
+#profile-picture,
+#sign-in-brand-logo {
   height: 45px;
   width: auto;
 }
 
+#sign-out {
+  display: none;
+}
+
+#sign-in-container {
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .3);
+  display: none;
+  z-index: 9;
+}
+
+#profile-display {
+  display: none;
+}
+
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  #brand-logo {
+  #brand-logo,
+  #profile-picture,
+  #sign-in-brand-logo {
     height: 75px;
     width: auto;
   }
 
-  #sign-in {
+  #sign-in,
+  #sign-out {
     color: #fff;
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;

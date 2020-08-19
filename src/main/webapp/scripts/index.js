@@ -53,16 +53,16 @@ function initApp() {
       $('#sign-out').show();
       $('#sign-in').hide();
       const profilePicture = document.createElement('img');
-      profilePicture.alt = 'Profile picture of signed in user';
+      profilePicture.alt = 'Profile picture of signed in user.';
       profilePicture.src = user.photoURL;
-      profilePicture.className = 'rounded-circle';
+      profilePicture.className = 'rounded-circle mr-3';
       profilePicture.id = 'profile-picture';
-      const displayName = document.createElement('p');
-      displayName.textContent = user.displayName;
+      const profileLink = document.createElement('span');
+      profileLink.textContent = user.displayName;
       $('#profile-display').append(profilePicture);
+      $('#profile-display').append(profileLink);
       $('#profile-display').show();
     } else {
-      console.log("No user!")
     }
   });
 }
@@ -152,9 +152,9 @@ function addOnClickListenerToElements() {
     $('#sign-in-container').show();
   });
   $('#sign-out').click(() => {
-    firebase.auth().signOut();
-    $('#sign-in').show();
-    $('#sign-out').hide();
+    firebase.auth().signOut().then(() => {
+      window.location.reload();
+    })
   });
 }
 
