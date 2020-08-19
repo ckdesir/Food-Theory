@@ -30,19 +30,12 @@ button {
   background-color: rgba(38, 38, 38, .9);
   height: auto;
   padding: 2rem;
-  position: absolute;
-  width: 100%;
-  z-index: 8;
+  z-index: 7;
 }
 
 .picture-caption {
   padding: 5px 0 5px 0;
   background-color: rgba(0, 0, 0, .8);
-}
-
-span.active,
-span.non-active:hover {
-  border-bottom: 3px solid black;
 }
 
 .dim {
@@ -61,33 +54,26 @@ label[for="autoComplete"] {
   width: 1px;
 }
 
-#brandLogo {
-  height: 45px;
-  width: auto;
-}
-
 #selections {
   background-color: white;
   box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .3);
   display: none;
-  position: absolute;
-  width: 100%;
-  z-index: 9;
+  z-index: 8;
 }
 
-#selectionContainer {
+.center-container {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+
+#selection-container {
   overflow-x: auto;
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  #brandLogo {
-    height: 75px;
-    width: auto;
-  }
-
-  p, 
-  #signIn,
+  p,
   #greeting-message-button {
     color: #fff;
     font-family: 'Open Sans', sans-serif;
@@ -95,16 +81,15 @@ label[for="autoComplete"] {
     font-weight: 600; 
   }
 
-  a {
-    font-size: 20px;
-  }
-
   #selections {
     background-color: white;
     box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .3);
     display: none;
+    z-index: 8;
+  }
+
+  .center-container {
     position: absolute;
-    width: 25%;
-    z-index: 9;
+    width: 40%;
   }
 }

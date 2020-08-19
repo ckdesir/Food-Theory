@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" 
       content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://kit.fontawesome.com/42c5d50c71.js" 
+    <script src="https://kit.fontawesome.com/42c5d50c71.js"
       crossorigin="anonymous"></script>
     <link rel="icon" href="./images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap"
@@ -13,46 +13,66 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
     <link rel="stylesheet" href="./styles/autoComplete.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
     <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/signin.css">
+
   </head>
   <body class="text-center">
     <header>
       <nav class="navbar navbar-expand-md">
         <div class="container">
           <a class="navbar-brand" href="#">
-            <img src="images/full-logo.png" id="brandLogo"
+            <img src="images/full-logo.png" id="brand-logo"
               alt="Logo for Food Theory">
           </a>
           <span class="navbar-toggler" type="button" data-toggle="collapse" 
-            data-target="#navbarCollapse" aria-controls="navbarCollapse" 
+            data-target="#nav-collapse" aria-controls="nav-collapse" 
             aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
           </span>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="collapse navbar-collapse" id="nav-collapse">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
                 <a class="nav-link text-dark active" href="index.html">
                   <span class="active">Home</span>
-                  <span class="sr-only">(current)</span></a>
+                  <span class="sr-only">(current)</span>
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-dark" href="#"><span class="non-active">
-                  About</span></a>
+                <a class="nav-link text-dark" href="#">
+                  <span class="non-active">About</span>
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-dark" href="#"><span class="non-active">
-                  Contact</span></a>
+                <a class="nav-link text-dark" href="#">
+                  <span class="non-active">Contact</span>
+                </a>
               </li>
             </ul>
+            <div class="nav-item d-none" id="profile-display">
+            </div>
             <button type="button" class="btn btn-dark navbar-right" id="signIn" 
               aria-label="Sign In">
               <i class="fas fa-sign-in-alt"></i> Sign In</button>
+            <button type="button" class="btn btn-dark navbar-right d-none" id="sign-out" 
+              aria-label="Sign Out">
+              <i class="fas fa-sign-out-alt"></i> Sign Out</button>
           </div>
         </div>
       </nav>
-    </header> 
+    </header>
     <div class="d-flex align-items-center justify-content-center">
-      <div class="card container custom-control custom-checkbox" 
+      <div class="card container center-container p-4" id="sign-in-container">
+        <button type="button" class="close" id="sign-in-close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img src="images/logo.png" id="brandLogo" alt="Logo for Food Theory">
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader">Loading...</div>
+      </div>
+      <div class="card container custom-control custom-checkbox center-container" 
         id="selections">
           <button type="button" class="close" id="selections-close" 
             aria-label="Close"><span aria-hidden="true">&times;</span>
@@ -65,7 +85,7 @@
           <label class="custom-control-label" for="foodInclusiveOrCheck">
             Find resturants that include ALL foods/cuisines selected</label>
       </div>
-      <div class="container" id="greeting-message">
+      <div class="container center-container" id="greeting-message">
         <p>Looking for a place to eat? A person of many tastes? 
           With a group of friends? Food Theory can find you places to eat at, 
           tailored to your specifications and current needs!</p>
@@ -94,6 +114,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>

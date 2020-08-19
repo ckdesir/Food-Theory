@@ -1,0 +1,32 @@
+a,
+a:focus,
+a:hover {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+html,
+body {
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+}
+
+p {
+  color: rgb(0, 0, 0);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  p {
+    color: rgb(0, 0, 0);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+  }
+
+  a {
+    font-size: 20px;
+  }
+}
