@@ -53,7 +53,7 @@
             </ul>
             <div class="nav-item d-none" id="profile-display">
             </div>
-            <button type="button" class="btn btn-dark navbar-right" id="signIn" 
+            <button type="button" class="btn btn-dark navbar-right" id="sign-in" 
               aria-label="Sign In">
               <i class="fas fa-sign-in-alt"></i> Sign In</button>
             <button type="button" class="btn btn-dark navbar-right d-none" id="sign-out" 
@@ -68,7 +68,7 @@
         <button type="button" class="close" id="sign-in-close" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <img src="images/logo.png" id="brandLogo" alt="Logo for Food Theory">
+        <img src="images/logo.png" id="sign-in-brand-logo" alt="Logo for Food Theory">
         <div id="firebaseui-auth-container"></div>
         <div id="loader">Loading...</div>
       </div>
@@ -79,10 +79,10 @@
           </button>
           <label for="autoComplete">Field for input</label>
           <input id="autoComplete" type="text" tabindex="0">
-          <div id="selectionContainer"></div>
+          <div id="selection-container"></div>
           <input type="checkbox" class="custom-control-input" 
-            id="foodInclusiveOrCheck">
-          <label class="custom-control-label" for="foodInclusiveOrCheck">
+            id="food-inclusive-or-check">
+          <label class="custom-control-label" for="food-inclusive-or-check">
             Find resturants that include ALL foods/cuisines selected</label>
       </div>
       <div class="container center-container" id="greeting-message">

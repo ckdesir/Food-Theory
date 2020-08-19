@@ -94,7 +94,7 @@ const BUILD_SELECTION_ITEM = (item) => {
   deleteIcon.className = 'fas fa-times-circle';
   deleteIcon.addEventListener('click', REMOVE_SELECTION_ITEM);
   badge.appendChild(deleteIcon);
-  document.getElementById('selectionContainer').appendChild(badge);
+  document.getElementById('selection-container').appendChild(badge);
 };
 
 /**
@@ -103,7 +103,7 @@ const BUILD_SELECTION_ITEM = (item) => {
  *    that captures what was clicked on
  */
 const REMOVE_SELECTION_ITEM = (mouseEvent) => {
-  document.getElementById('selectionContainer')
+  document.getElementById('selection-container')
       .removeChild(mouseEvent.target.parentNode);
 }
 
