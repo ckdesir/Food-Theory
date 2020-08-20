@@ -33,7 +33,9 @@ target/
 *.iml
 .idea/
 .eclipse
-src/main/java/com/food_theory/sps/data/ApiKeys.java
+ApiKeys.java
+functions/
+main/
 
 npm-debug.log*
 yarn-debug.log*

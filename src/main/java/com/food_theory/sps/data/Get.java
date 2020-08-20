@@ -14,35 +14,23 @@ public class Get {
    * Executes a GET request on the target url.
    * @param {String} targetURL - the URL the GET request is sent to.
    */
-  public static String get(String targetURL) {
-    HttpURLConnection connection = null;
-    try {
-      URL url = new URL(targetURL);
-      connection = (HttpURLConnection) url.openConnection();
-      connection.setRequestMethod("GET");
-      connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-      connection.setRequestProperty("Content-Language", "en-US");
-      connection.setUseCaches(false);
-      connection.setDoOutput(true);
-      DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-      wr.close();
-      InputStream is = connection.getInputStream();
-      BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-      StringBuffer response = new StringBuffer();
-      String line;
-      while ((line = rd.readLine()) != null) {
-        response.append(line);
-        response.append('\r');
-      }
-      rd.close();
+  public static String sendGET(String targetURL) throws IOException {
+		URL obj = new URL(targetURL);
+		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+		con.setRequestMethod("GET");
+		int responseCode = con.getResponseCode();
+		if (responseCode == HttpURLConnection.HTTP_OK) { 
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					con.getInputStream()));
+			String inputLine;
+			StringBuffer response = new StringBuffer();
+			while ((inputLine = in.readLine()) != null) {
+				response.append(inputLine);
+			}
+			in.close();
       return response.toString();
-    } catch (Exception e) {
-      e.printStackTrace();
-      return null;
-    } finally {
-      if (connection != null) {
-        connection.disconnect();
-      }
-    }
-  }
+		} else {
+			return null;
+		}
+	}
 }

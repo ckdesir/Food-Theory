@@ -8,9 +8,8 @@ afterEach(() => {
 
 test('buildCarouselCaption', () => {
   const expectedInnerHTML = 
-      'Image by <a href="https://pixabay.com/users/Josch13-48777/">'+
-      'Josch13</a> on <a href="https://pixabay.com">Pixabay</a>.';
-  expect(indexScript.buildCarouselCaption('Josch13', '48777').innerHTML)
+    'Photo by <a href="https://unsplash.com/@anniespratt?utm_source=food-theory&amp;utm_medium=referral">Annie Spratt</a> on <a href="https://unsplash.com/?utm_source=food-theory&amp;utm_medium=referral">Unsplash</a>.';
+  expect(indexScript.buildCarouselCaption('Annie Spratt', 'https://unsplash.com/@anniespratt').innerHTML)
       .toEqual(expectedInnerHTML);
 });
 
@@ -18,10 +17,10 @@ test('buildCarouselDiv', () => {
   document.body.innerHTML = '<div id="carousel-home-page"></div>';
   const carouselContainer = document.getElementById('carousel-home-page');
   const expectedPhotographerLink = document.createElement('a');
-  expectedPhotographerLink.href = 'https://pixabay.com/users/Josch13-48777/';
-  expectedPhotographerLink.appendChild(document.createTextNode('Josch13'));
+  expectedPhotographerLink.href = 'https://unsplash.com/@anniespratt?utm_source=food-theory&utm_medium=referral';
+  expectedPhotographerLink.appendChild(document.createTextNode('Annie Spratt'));
   indexScript.buildCarouselDiv(
-      'https://pixabay.com/get/ed6a99fd0a76647_1280.jpg', 'Josch13', '48777');
+    'https://images.unsplash.com/photo-1565729341099-2557e318fca0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjE1NjU4OX0', 'Annie Spratt', 'https://unsplash.com/@anniespratt');
   expect(carouselContainer.children[0].className).toEqual('container carousel-item');
   expect(carouselContainer.children[0].lastElementChild.querySelector('a')).
       toEqual(expectedPhotographerLink);

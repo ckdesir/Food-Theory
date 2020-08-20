@@ -9,19 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet that retrieves pictures from Pixabay for the carousel. */
+/** Servlet that retrieves pictures from Unsplash for the carousel. */
 @WebServlet("/retrieve-photos")
 public class PhotoServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String pixabayResponse = Get.get(
-      "https://pixabay.com/api/?key="+ApiKeys.PIXABAY_KEY+"&lang=en&image_type=photo&orientation="+
-      "vertical&category=food&safesearch=true&per_page=40&q="+
-      "restaurant+food+dinner"
+    String unsplashResponse = Get.sendGET(
+      "https://api.unsplash.com/photos/random/?client_id="+ApiKeys.UNSPLASH_KEY+
+      "&count=30&orientation=portrait&query=food-cafe-restaurant-cafe"
     );
     Gson gson = new Gson();
-    String json = gson.toJson(pixabayResponse);
+    String json = gson.toJson(unsplashResponse);
     response.setStatus(HttpServletResponse.SC_OK);
     response.setContentType("application/json;");
     response.getWriter().println(json);

@@ -73,10 +73,10 @@ function detectSignedInUser() {
  */
 function addToLandingCarousel() {
   fetch('/retrieve-photos').then(response => response.json()).then(pictures => {
-    JSON.parse(pictures.toString()).hits.forEach(pictureInfo => {
-      buildCarouselDiv(pictureInfo.largeImageURL, pictureInfo.user, 
-          pictureInfo.user_id, pictureInfo.tags
-      );
+    JSON.parse(pictures.toString()).forEach(picture => {
+      buildCarouselDiv(
+        picture.urls.regular, picture.user.name, 
+        picture.user.links.html, picture.alt_description);
     });
   });
 }
@@ -86,21 +86,21 @@ function addToLandingCarousel() {
  * given a url pointing to an image.
  * @param {string} urlOfImage
  * @param {string} photographer
- * @param {string} photographerId
- * @param {string} imageTags
+ * @param {string} photographerPage
+ * @param {string} imageAlt
  */
-function buildCarouselDiv(urlOfImage, photographer, photographerId, imageTags) {
+function buildCarouselDiv(urlOfImage, photographer, photographerPage, imageAlt) {
   const /** HTMLDivElement */ carouselDiv = document.createElement('div');
   carouselDiv.className = 'container carousel-item';
   const /** HTMLImageElement */ carouselImage = document.createElement('img');
   carouselImage.src = urlOfImage;
-  carouselImage.alt = imageTags
-  carouselImage.className = 'd-block w-100 h-100';
+  carouselImage.alt = imageAlt;
+  carouselImage.className = 'w-100 h-auto';
   const /** HTMLDivElement */ carouselCaptionDiv = 
       document.createElement('div');
   carouselCaptionDiv.className = 'picture-caption';
   carouselCaptionDiv.appendChild(
-      buildCarouselCaption(photographer, photographerId));
+      buildCarouselCaption(photographer, photographerPage));
   carouselDiv.appendChild(carouselImage);
   carouselDiv.appendChild(carouselCaptionDiv);
   document.getElementById('carousel-home-page').appendChild(carouselDiv);
@@ -111,30 +111,31 @@ function buildCarouselDiv(urlOfImage, photographer, photographerId, imageTags) {
  * attributes the images of the carousel to the name of the photographer passed
  * in, linking to their portfolio.
  * @param {string} photographer 
- * @param {string} photographerId 
+ * @param {string} photographerPage
  * @return {HTMLParagraphElement} the carousel caption
  */
-function buildCarouselCaption(photographer, photographerId) {
+function buildCarouselCaption(photographer, photographerPage) {
   const /** HTMLParagrahElement */ carouselCaption =
       document.createElement('p');
   const /** HTMLAnchorElement */ photographerLink = document.createElement('a');
   photographerLink.href =
-      `https://pixabay.com/users/${photographer}-${photographerId}/`;
+      photographerPage + '?utm_source=food-theory&utm_medium=referral';
   photographerLink.appendChild(document.createTextNode(photographer));
-  const /** HTMLAnchorElement */ pixabayLink = document.createElement('a');
-  pixabayLink.href = 'https://pixabay.com';
-  pixabayLink.appendChild(document.createTextNode('Pixabay'));
-  carouselCaption.appendChild(document.createTextNode('Image by '));
+  const /** HTMLAnchorElement */ unsplashLink = document.createElement('a');
+  unsplashLink.href = 
+      'https://unsplash.com/?utm_source=food-theory&utm_medium=referral';
+  unsplashLink.appendChild(document.createTextNode('Unsplash'));
+  carouselCaption.appendChild(document.createTextNode('Photo by '));
   carouselCaption.appendChild(photographerLink);
   carouselCaption.appendChild(document.createTextNode(' on '));
-  carouselCaption.appendChild(pixabayLink);
+  carouselCaption.appendChild(unsplashLink);
   carouselCaption.appendChild(document.createTextNode('.'));
   return carouselCaption;
 }
 
 /**
- * Adds an onclick event listener to some of the elements on the
- * main webpage.
+ * function addOnClickListenerToElements() adds an onclick event listener 
+ * to some of the elements on the main webpage.
  */
 function addOnClickListenerToElements() {
   $('#greeting-message-button').click(() => {
@@ -159,8 +160,8 @@ function addOnClickListenerToElements() {
 }
 
 /**
- * Uses the Datamuse api to suggest words based off of the input of the user,
- * refreshing the data of autoComplete.
+ * function eventListenerFunction() uses the Datamuse api to suggest words 
+ * based off of the input of the user, refreshing the data of autoComplete.
  * @param {CustomEvent} customEvent 
  */
 function eventListenerFunction(customEvent) {
