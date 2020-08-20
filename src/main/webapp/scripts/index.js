@@ -1,10 +1,10 @@
 import * as autoCompleteConstants from './autocompleteconstants.js';
-import * as firebaseConstants from './firebaseconstants.js'
+import * as firebaseConstants from './firebaseconstants.js';
 import { AutoComplete } from './autocomplete.js';
 
 /**
  * An object of AutoComplete, essentially wraps the autoComplete object of the
- * autoComplete.js library. autoComplete enables users to quickly find and 
+ * autoComplete.js library. autoComplete enables users to quickly find and
  * select from a populated list of values as they type, leveraging searching and
  * filtering. More information here:
  * https://tarekraafat.github.io/autoComplete.js/#/?id=api-configuration.
@@ -25,12 +25,12 @@ const autoComplete = new AutoComplete(
  * anonymous function, which calls main.
  */
 window.onload = function () {
-  main(); 
-}
+  main();
+};
 
 /**
  * function main() adds pictures to the carousel, initializes an AutoComplete
- * object, adds onClickListeners to some elements on the main page, 
+ * object, adds onClickListeners to some elements on the main page,
  * and detects whether a user is signed in;
  */
 function main() {
@@ -43,12 +43,12 @@ function main() {
 }
 
 /**
- * function detectSignedInUser() adds an observer for changes to the 
- * user's sign-in state. Updates interface in the case where a user 
+ * function detectSignedInUser() adds an observer for changes to the
+ * user's sign-in state. Updates interface in the case where a user
  * is signed into the website.
  */
 function detectSignedInUser() {
-  firebase.auth().onAuthStateChanged(user => {
+  firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       $('#sign-out').show();
       $('#sign-in').hide();
@@ -71,35 +71,49 @@ function detectSignedInUser() {
  * on the landing page of the website.
  */
 function addToLandingCarousel() {
-  fetch('/retrieve-photos').then(response => response.json()).then(pictures => {
-    JSON.parse(pictures.toString()).forEach(picture => {
-      buildCarouselDiv(
-        picture.urls.regular, picture.user.name, 
-        picture.user.links.html, picture.alt_description);
+  fetch('/retrieve-photos')
+    .then((response) => response.json())
+    .then((pictures) => {
+      JSON.parse(pictures.toString()).forEach((picture) => {
+        buildCarouselDiv(
+          picture.urls.regular,
+          picture.user.name,
+          picture.user.links.html,
+          picture.alt_description
+        );
+      });
     });
-  });
 }
 
 /**
- * function buildCarouselDiv() builds a carousel image div 
+ * function buildCarouselDiv() builds a carousel image div
  * given a url pointing to an image.
  * @param {string} urlOfImage the url of the image
  * @param {string} photographer the name of the photographer
  * @param {string} photographerPage the webpage of the photographer
  * @param {string} imageAlt text alternative to the image
  */
-function buildCarouselDiv(urlOfImage, photographer, photographerPage, imageAlt) {
+function buildCarouselDiv(
+  urlOfImage,
+  photographer,
+  photographerPage,
+  imageAlt
+) {
   const /** HTMLDivElement */ carouselDiv = document.createElement('div');
   carouselDiv.className = 'container carousel-item';
-  const /** HTMLImageElement */ carouselImage = document.createElement('img');
+  const /** HTMLImageElement */ carouselImage = document.createElement(
+      'img'
+    );
   carouselImage.src = urlOfImage;
   carouselImage.alt = imageAlt;
   carouselImage.className = 'w-100 h-auto';
-  const /** HTMLDivElement */ carouselCaptionDiv = 
-      document.createElement('div');
+  const /** HTMLDivElement */ carouselCaptionDiv = document.createElement(
+      'div'
+    );
   carouselCaptionDiv.className = 'picture-caption';
   carouselCaptionDiv.appendChild(
-      buildCarouselCaption(photographer, photographerPage));
+    buildCarouselCaption(photographer, photographerPage)
+  );
   carouselDiv.appendChild(carouselImage);
   carouselDiv.appendChild(carouselCaptionDiv);
   document.getElementById('carousel-home-page').appendChild(carouselDiv);
@@ -114,15 +128,20 @@ function buildCarouselDiv(urlOfImage, photographer, photographerPage, imageAlt) 
  * @return {HTMLParagraphElement} the carousel caption
  */
 function buildCarouselCaption(photographer, photographerPage) {
-  const /** HTMLParagrahElement */ carouselCaption =
-      document.createElement('p');
-  const /** HTMLAnchorElement */ photographerLink = document.createElement('a');
+  const /** HTMLParagrahElement */ carouselCaption = document.createElement(
+      'p'
+    );
+  const /** HTMLAnchorElement */ photographerLink = document.createElement(
+      'a'
+    );
   photographerLink.href =
-      photographerPage + '?utm_source=food-theory&utm_medium=referral';
+    photographerPage + '?utm_source=food-theory&utm_medium=referral';
   photographerLink.appendChild(document.createTextNode(photographer));
-  const /** HTMLAnchorElement */ unsplashLink = document.createElement('a');
-  unsplashLink.href = 
-      'https://unsplash.com/?utm_source=food-theory&utm_medium=referral';
+  const /** HTMLAnchorElement */ unsplashLink = document.createElement(
+      'a'
+    );
+  unsplashLink.href =
+    'https://unsplash.com/?utm_source=food-theory&utm_medium=referral';
   unsplashLink.appendChild(document.createTextNode('Unsplash'));
   carouselCaption.appendChild(document.createTextNode('Photo by '));
   carouselCaption.appendChild(photographerLink);
@@ -133,7 +152,7 @@ function buildCarouselCaption(photographer, photographerPage) {
 }
 
 /**
- * function addOnClickListenerToElements() adds an onclick event listener 
+ * function addOnClickListenerToElements() adds an onclick event listener
  * to some of the elements on the main webpage.
  */
 function addOnClickListenerToElements() {
@@ -152,29 +171,32 @@ function addOnClickListenerToElements() {
     window.location.href = 'signin.html?redirect=index.html';
   });
   $('#sign-out').click(() => {
-    firebase.auth().signOut().then(() => {
-      window.location.reload();
-    });
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        window.location.reload();
+      });
   });
 }
 
 /**
- * function eventListenerFunction() uses the Datamuse api to suggest words 
+ * function eventListenerFunction() uses the Datamuse api to suggest words
  * based off of the input of the user, refreshing the data of autoComplete.
- * @param {CustomEvent} customEvent 
+ * @param {CustomEvent} customEvent
  */
 function eventListenerFunction(customEvent) {
   autoComplete.setData({
     src: async function () {
-      const source = 
-          await fetch(
-              `https://api.datamuse.com/sug?s=${customEvent.detail.input}`);
+      const source = await fetch(
+        `https://api.datamuse.com/sug?s=${customEvent.detail.input}`
+      );
       const data = await source.json();
       return data;
     },
-    key: ["word"],
-    cache: false
+    key: ['word'],
+    cache: false,
   });
 }
 
-export { addToLandingCarousel, buildCarouselDiv, buildCarouselCaption }
+export { addToLandingCarousel, buildCarouselDiv, buildCarouselCaption };

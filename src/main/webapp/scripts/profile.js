@@ -1,4 +1,4 @@
-import * as firebaseConstants from './firebaseconstants.js'
+import * as firebaseConstants from './firebaseconstants.js';
 
 /**
  * Time before the user is redirected back to the homepage if they aren't logged
@@ -13,10 +13,10 @@ const REDIRECT_TIME_MS = 5000;
  */
 window.onload = function () {
   main();
-}
+};
 
 /**
- * function main() adds adds onClickListeners to some elements on the main page, 
+ * function main() adds adds onClickListeners to some elements on the main page,
  * and detects whether a user is signed in.
  */
 function main() {
@@ -26,12 +26,12 @@ function main() {
 }
 
 /**
- * function detectSignedInUser() adds an observer for changes to the 
- * user's sign-in state. Updates interface in the case where a user is 
+ * function detectSignedInUser() adds an observer for changes to the
+ * user's sign-in state. Updates interface in the case where a user is
  * signed into the website and redirects users back to home if not.
  */
 function detectSignedInUser() {
-  firebase.auth().onAuthStateChanged(user => {
+  firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       $('#navigation').show();
     } else {
@@ -44,7 +44,7 @@ function detectSignedInUser() {
 }
 
 /**
- * function addOnClickListenerToElements() adds an onclick event listener 
+ * function addOnClickListenerToElements() adds an onclick event listener
  * to some of the elements on the main webpage.
  */
 function addOnClickListenerToElements() {

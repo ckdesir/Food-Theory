@@ -11,8 +11,8 @@ test('AUTOCOMPLETE_NO_RESULTS', () => {
   const expectedResult = document.createElement('li');
   expectedResult.setAttribute('class', 'no_result');
   expectedResult.setAttribute('tabindex', '1');
-  expectedResult.innerHTML = 
-      'Nothing found. Press enter to add to list anyways!';
+  expectedResult.innerHTML =
+    'Nothing found. Press enter to add to list anyways!';
   autoCompleteConstants.AUTOCOMPLETE_NO_RESULTS();
   expect(autoCompleteList.children[0]).toEqual(expectedResult);
 });
@@ -28,9 +28,9 @@ test('AUTOCOMPLETE_ON_SELECTION', () => {
   autoCompleteConstants.AUTOCOMPLETE_ON_SELECTION({
     selection: {
       value: {
-        word: 'Hello'
-      }
-    }
+        word: 'Hello',
+      },
+    },
   });
   expect(autoComplete.value).toEqual('');
 });
@@ -57,7 +57,7 @@ test('ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE, KEYUP DETECTED', () => {
   document.body.appendChild(selectionContainer);
   autoCompleteConstants.ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE();
   var e = $.Event('keyup');
-  e.key = 'Enter' 
+  e.key = 'Enter';
   $('#autoComplete').trigger(e);
   expect(autoComplete.value).toEqual('');
 });
@@ -68,12 +68,14 @@ test('BUILD_SELECTION_ITEM', () => {
   document.body.appendChild(selectionContainer);
   const expectedBadge = document.createElement('span');
   expectedBadge.className =
-      'badge badge-dark align-self-center justify-content-center p-2 m-2';
+    'badge badge-dark align-self-center justify-content-center p-2 m-2';
   expectedBadge.innerText = 'Fettucine Alfredo ';
   const expcetedDeleteIcon = document.createElement('i');
   expcetedDeleteIcon.className = 'fas fa-times-circle';
   expcetedDeleteIcon.addEventListener(
-      'click', autoCompleteConstants.REMOVE_SELECTION_ITEM);
+    'click',
+    autoCompleteConstants.REMOVE_SELECTION_ITEM
+  );
   expectedBadge.appendChild(expcetedDeleteIcon);
   autoCompleteConstants.BUILD_SELECTION_ITEM('Fettucine Alfredo');
   expect(selectionContainer.children[0]).toEqual(expectedBadge);
@@ -87,7 +89,9 @@ test('REMOVE_SELECTION_ITEM', () => {
   const childNode = document.createElement('i');
   childNode.id = 'clickable';
   childNode.addEventListener(
-      'click', autoCompleteConstants.REMOVE_SELECTION_ITEM);
+    'click',
+    autoCompleteConstants.REMOVE_SELECTION_ITEM
+  );
   parentNode.appendChild(childNode);
   selectionContainer.appendChild(parentNode);
   $('i').click();

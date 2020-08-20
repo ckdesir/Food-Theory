@@ -2,12 +2,17 @@
   display: inline;
 }
 
-a, a:focus, a:hover, p, button {
+a,
+a:focus,
+a:hover,
+p,
+button {
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
 }
 
-html, body {
+html,
+body {
   background-color: #fff;
   height: 100%;
   width: 100%;

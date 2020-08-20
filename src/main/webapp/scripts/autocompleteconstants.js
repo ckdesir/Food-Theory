@@ -16,7 +16,7 @@ const AUTOCOMPLETE_PLACEHOLDER = 'Enter foods or cuisines!';
  * @type {Object}
  */
 const AUTOCOMPLETE_TRIGGER = {
-  event: ['input', 'focusin', 'focusout']
+  event: ['input', 'focusin', 'focusout'],
 };
 
 /**
@@ -25,12 +25,12 @@ const AUTOCOMPLETE_TRIGGER = {
  */
 const AUTOCOMPLETE_RESULTS_LIST = {
   render: true,
-  container: source => {
+  container: (source) => {
     source.setAttribute('id', 'autoComplete_list');
   },
   element: 'ul',
   destination: document.querySelector('#autoComplete'),
-  position: 'afterend'
+  position: 'afterend',
 };
 
 /**
@@ -68,27 +68,29 @@ const AUTOCOMPLETE_ON_SELECTION = (feedback) => {
 };
 
 /**
- * Detects when the enter key is released on the autoComplete input, 
- * building a selection item of whatever was in the input at the time. 
+ * Detects when the enter key is released on the autoComplete input,
+ * building a selection item of whatever was in the input at the time.
  */
 const ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE = () => {
   $('#autoComplete').on('keyup', (keyboardEvent) => {
-    if ((keyboardEvent.key === 'Enter' || keyboardEvent.keyCode === 13) &&
-      keyboardEvent.target.value) {
+    if (
+      (keyboardEvent.key === 'Enter' || keyboardEvent.keyCode === 13) &&
+      keyboardEvent.target.value
+    ) {
       BUILD_SELECTION_ITEM(keyboardEvent.target.value);
       document.querySelector('#autoComplete').value = '';
     }
   });
-}
+};
 
 /**
  * Builds a badge of the given item.
- * @param {string} item 
+ * @param {string} item
  */
 const BUILD_SELECTION_ITEM = (item) => {
   const badge = document.createElement('span');
-  badge.className = 
-      'badge badge-dark align-self-center justify-content-center p-2 m-2';
+  badge.className =
+    'badge badge-dark align-self-center justify-content-center p-2 m-2';
   badge.innerText = item + ' ';
   const deleteIcon = document.createElement('i');
   deleteIcon.className = 'fas fa-times-circle';
@@ -103,12 +105,20 @@ const BUILD_SELECTION_ITEM = (item) => {
  *    that captures what was clicked on
  */
 const REMOVE_SELECTION_ITEM = (mouseEvent) => {
-  document.getElementById('selection-container')
-      .removeChild(mouseEvent.target.parentNode);
-}
+  document
+    .getElementById('selection-container')
+    .removeChild(mouseEvent.target.parentNode);
+};
 
-export { AUTOCOMPLETE_HIGHLIGHT, AUTOCOMPLETE_NO_RESULTS, 
-  AUTOCOMPLETE_ON_SELECTION, AUTOCOMPLETE_PLACEHOLDER, BUILD_SELECTION_ITEM,
-  AUTOCOMPLETE_RESULTS_LIST, AUTOCOMPLETE_RESULT_ITEM, AUTOCOMPLETE_TRIGGER,
-  ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE, REMOVE_SELECTION_ITEM }
-
+export {
+  AUTOCOMPLETE_HIGHLIGHT,
+  AUTOCOMPLETE_NO_RESULTS,
+  AUTOCOMPLETE_ON_SELECTION,
+  AUTOCOMPLETE_PLACEHOLDER,
+  BUILD_SELECTION_ITEM,
+  AUTOCOMPLETE_RESULTS_LIST,
+  AUTOCOMPLETE_RESULT_ITEM,
+  AUTOCOMPLETE_TRIGGER,
+  ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE,
+  REMOVE_SELECTION_ITEM,
+};
