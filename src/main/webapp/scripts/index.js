@@ -1,5 +1,5 @@
-import * as autoCompleteConstants from './autocompleteconstants.js';
-import * as firebaseConstants from './firebaseconstants.js';
+import * as autoCompleteConstants from './autocomplete-constants.js';
+import * as firebaseConstants from './firebase-constants.js';
 import { AutoComplete } from './autocomplete.js';
 
 /**
@@ -163,9 +163,6 @@ function addOnClickListenerToElements() {
   $('#selections-close').click(() => {
     $('#selections').hide();
     $('#greeting-message').show();
-  });
-  $('#sign-in-close').click(() => {
-    $('#sign-in-container').hide();
   });
   $('#sign-in').click(() => {
     window.location.href = 'signin.html?redirect=index.html';

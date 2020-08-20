@@ -1,4 +1,4 @@
-import * as autoCompleteConstants from '../scripts/autocompleteconstants';
+import * as autoCompleteConstants from '../scripts/autocomplete-constants';
 
 beforeEach(() => {
   document.body.innerHTML = '';

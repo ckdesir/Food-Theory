@@ -1,4 +1,4 @@
-import * as firebaseConstants from './firebaseconstants.js';
+import * as firebaseConstants from './firebase-constants.js';
 
 /**
  * Time before the user is redirected back to the homepage if they aren't logged

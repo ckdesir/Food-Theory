@@ -1,4 +1,4 @@
-import * as firebaseConstants from './firebaseconstants.js';
+import * as firebaseConstants from './firebase-constants.js';
 
 /**
  * This waits until the webpage loads and then it calls the

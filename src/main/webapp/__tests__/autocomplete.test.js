@@ -1,5 +1,5 @@
 import { AutoComplete } from '../scripts/autocomplete';
-import * as autoCompleteConstants from '../scripts/autocompleteconstants';
+import * as autoCompleteConstants from '../scripts/autocomplete-constants';
 
 jest.mock('@tarekraafat/autocomplete.js', () => {
   return {
