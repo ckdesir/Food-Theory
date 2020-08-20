@@ -1,12 +1,9 @@
-a,
-a:focus,
-a:hover {
+a, a:focus, a:hover {
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
 }
 
-html,
-body {
+html, body {
   background-color: #fff;
   height: 100%;
   width: 100%;
@@ -18,12 +15,11 @@ body {
   padding: 0.5rem 1rem;
 }
 
-p, 
-button {
+p, button {
   color: #fff;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
-  font-weight: 600; 
+  font-weight: 600;
 }
 
 #greeting-message {
@@ -38,7 +34,7 @@ button {
   background-color: rgba(0, 0, 0, .8);
 }
 
-label[for="autoComplete"] { 
+label[for="autoComplete"] {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -68,21 +64,18 @@ label[for="autoComplete"] {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  p,
-  #greeting-message-button {
+  p, #greeting-message-button {
     color: #fff;
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
-    font-weight: 600; 
+    font-weight: 600;
   }
-
   #selections {
     background-color: white;
     box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .3);
     display: none;
     z-index: 8;
   }
-
   .center-container {
     position: absolute;
     width: 40%;

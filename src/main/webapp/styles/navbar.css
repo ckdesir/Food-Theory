@@ -1,10 +1,8 @@
-span.active,
-span.non-active:hover {
+span.active, span.non-active:hover {
   border-bottom: 3px solid black;
 }
 
-#brand-logo,
-#profile-picture {
+#brand-logo, #profile-picture {
   height: 45px;
   width: auto;
 }
@@ -19,17 +17,14 @@ span.non-active:hover {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  #brand-logo,
-  #profile-picture {
+  #brand-logo, #profile-picture {
     height: 75px;
     width: auto;
   }
-
-  #sign-in,
-  #sign-out {
+  #sign-in, #sign-out {
     color: #fff;
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
-    font-weight: 600; 
+    font-weight: 600;
   }
 }

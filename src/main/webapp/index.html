@@ -3,17 +3,21 @@
   <head>
     <title>Food Theory</title>
     <meta charset="UTF-8">
-    <meta name="viewport" 
+    <meta name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/42c5d50c71.js"
       crossorigin="anonymous"></script>
     <link rel="icon" href="./images/logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap"
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap"
       rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/autoComplete.css">
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
+    <link type="text/css" rel="stylesheet"
+      href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/navbar.css">
   </head>
@@ -25,8 +29,8 @@
             <img src="images/full-logo.png" id="brand-logo"
               alt="Logo for Food Theory">
           </a>
-          <span class="navbar-toggler" type="button" data-toggle="collapse" 
-            data-target="#nav-collapse" aria-controls="nav-collapse" 
+          <span class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#nav-collapse" aria-controls="nav-collapse"
             aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
           </span>
@@ -49,37 +53,39 @@
                 </a>
               </li>
             </ul>
-            <a class="nav-item mr-3" id="profile-display" href="profile.html">
+            <a class="nav-item mr-3" id="profile-display"
+              href="profile.html">
             </a>
-            <button type="button" class="btn btn-dark navbar-right" id="sign-in" 
-              aria-label="Sign In">
+            <button type="button" class="btn btn-dark navbar-right"
+              id="sign-in" aria-label="Sign In">
               <i class="fas fa-sign-in-alt"></i> Sign In</button>
-            <button type="button" class="btn btn-dark navbar-right" id="sign-out" 
-              aria-label="Sign Out">
+            <button type="button" class="btn btn-dark navbar-right"
+              id="sign-out" aria-label="Sign Out">
               <i class="fas fa-sign-out-alt"></i> Sign Out</button>
           </div>
         </div>
       </nav>
     </header>
     <div class="d-flex align-items-center justify-content-center">
-      <div class="card container custom-control custom-checkbox center-container" 
-        id="selections">
-          <button type="button" class="close" id="selections-close" 
-            aria-label="Close"><span aria-hidden="true">&times;</span>
-          </button>
-          <label for="autoComplete">Field for input</label>
-          <input id="autoComplete" type="text" tabindex="0">
-          <div id="selection-container"></div>
-          <input type="checkbox" class="custom-control-input" 
-            id="food-inclusive-or-check">
-          <label class="custom-control-label" for="food-inclusive-or-check">
-            Find resturants that include ALL foods/cuisines selected</label>
+      <div class="card container custom-control custom-checkbox 
+          center-container" id="selections">
+        <button type="button" class="close" id="selections-close"
+          aria-label="Close"><span aria-hidden="true">&times;</span>
+        </button>
+        <label for="autoComplete">Field for input</label>
+        <input id="autoComplete" type="text" tabindex="0">
+        <div id="selection-container"></div>
+        <input type="checkbox" class="custom-control-input"
+          id="food-inclusive-or-check">
+        <label class="custom-control-label" for="food-inclusive-or-check">
+          Find resturants that include ALL foods/cuisines selected</label>
       </div>
       <div class="container center-container" id="greeting-message">
-        <p>Looking for a place to eat? A person of many tastes? 
-          With a group of friends? Food Theory can find you places to eat at, 
+        <p>Looking for a place to eat? A person of many tastes?
+          With a group of friends? Food Theory can find you places to eat
+          at,
           tailored to your specifications and current needs!</p>
-        <button type="button" class="btn btn-dark btn-xl" 
+        <button type="button" class="btn btn-dark btn-xl"
           id="greeting-message-button">Get Started</button>
       </div>
       <div class="carousel slide" data-ride="carousel">
@@ -88,25 +94,34 @@
             <img class="h-auto w-100" src="./images/Jongno-2-ga.jpg"
               alt="A picture of Jongno 2-ga street in South Korea">
             <div class="picture-caption">
-              <p>Image by 
+              <p>Image by
                 <a href="https://pixabay.com/users/stocksnap-894430/">
-                Markus Winkler</a> on <a href="https://pixabay.com">
-                Pixabay</a>.
+                  Markus Winkler</a> on <a href="https://pixabay.com">
+                  Pixabay</a>.
               </p>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
+    <script
+      src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+    <script
+      src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+    <script
+      src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>

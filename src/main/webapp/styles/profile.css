@@ -2,17 +2,12 @@
   display: inline;
 }
 
-a,
-a:focus,
-a:hover,
-p,
-button {
+a, a:focus, a:hover, p, button {
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
 }
 
-html,
-body {
+html, body {
   background-color: #fff;
   height: 100%;
   width: 100%;
@@ -40,7 +35,7 @@ button {
 
 .imgwrap img {
   display: block;
-  height: auto; 
+  height: auto;
   margin: auto;
   width: 100%;
 }
@@ -58,15 +53,13 @@ button {
   p {
     font-size: 20px;
   }
-
   .imgwrap {
     margin: auto;
     width: 25%;
   }
-
   .imgwrap img {
     display: block;
-    height: auto; 
+    height: auto;
     margin: auto;
     max-width: 500px;
     width: 100%;

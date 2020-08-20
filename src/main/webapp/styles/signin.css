@@ -13,20 +13,20 @@ i:hover {
 
 .imgwrap img {
   display: block;
-  height: auto; 
+  height: auto;
   margin: auto;
   width: 100%;
 }
 
+/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .imgwrap {
     margin: auto;
     width: 25%;
   }
-
   .imgwrap img {
     display: block;
-    height: auto; 
+    height: auto;
     margin: auto;
     max-width: 500px;
     width: 100%;

@@ -43,9 +43,9 @@ function main() {
 }
 
 /**
- * function detectSignedInUser() adds an observer for changes to the user's sign-in state.
- * Updates interface in the case where a user is signed into the 
- * website.
+ * function detectSignedInUser() adds an observer for changes to the 
+ * user's sign-in state. Updates interface in the case where a user 
+ * is signed into the website.
  */
 function detectSignedInUser() {
   firebase.auth().onAuthStateChanged(user => {
@@ -83,10 +83,10 @@ function addToLandingCarousel() {
 /**
  * function buildCarouselDiv() builds a carousel image div 
  * given a url pointing to an image.
- * @param {string} urlOfImage
- * @param {string} photographer
- * @param {string} photographerPage
- * @param {string} imageAlt
+ * @param {string} urlOfImage the url of the image
+ * @param {string} photographer the name of the photographer
+ * @param {string} photographerPage the webpage of the photographer
+ * @param {string} imageAlt text alternative to the image
  */
 function buildCarouselDiv(urlOfImage, photographer, photographerPage, imageAlt) {
   const /** HTMLDivElement */ carouselDiv = document.createElement('div');
@@ -109,8 +109,8 @@ function buildCarouselDiv(urlOfImage, photographer, photographerPage, imageAlt) 
  * function buildCarouselCaption() builds a paragraph element that correctly
  * attributes the images of the carousel to the name of the photographer passed
  * in, linking to their portfolio.
- * @param {string} photographer 
- * @param {string} photographerPage
+ * @param {string} photographer the name of the photographer
+ * @param {string} photographerPage the webpage of the photographer
  * @return {HTMLParagraphElement} the carousel caption
  */
 function buildCarouselCaption(photographer, photographerPage) {

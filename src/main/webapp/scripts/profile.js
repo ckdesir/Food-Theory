@@ -3,6 +3,7 @@ import * as firebaseConstants from './firebaseconstants.js'
 /**
  * Time before the user is redirected back to the homepage if they aren't logged
  * in.
+ * @type {number}
  */
 const REDIRECT_TIME_MS = 5000;
 
