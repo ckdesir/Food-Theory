@@ -53,9 +53,6 @@ const UI_CONFIG = (signInSuccessUrl) => {
       },
       {
         provider: firebase.auth.TwitterAuthProvider.PROVIDER_ID
-      },
-      {
-        provider: firebase.auth.GithubAuthProvider.PROVIDER_ID
       }
     ],
     tosUrl: 'tos.html',
@@ -65,10 +62,11 @@ const UI_CONFIG = (signInSuccessUrl) => {
 
 /**
  * Adds the different sign-in providers to the authentication container
+ * @param {String}
  */
-const INITALIZE_SIGN_IN = () => {
+const INITALIZE_SIGN_IN = (redirectURL) => {
   const ui = new firebaseui.auth.AuthUI(firebase.auth());
-  ui.start('#firebaseui-auth-container', UI_CONFIG(window.location.href));
+  ui.start('#firebaseui-auth-container', UI_CONFIG(redirectURL));
 }
 
 export { FIREBASE_CONFIG, UI_CONFIG, INITALIZE_SIGN_IN }

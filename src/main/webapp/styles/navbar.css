@@ -4,20 +4,13 @@ span.non-active:hover {
 }
 
 #brand-logo,
-#profile-picture,
-#sign-in-brand-logo {
+#profile-picture {
   height: 45px;
   width: auto;
 }
 
 #sign-out {
   display: none;
-}
-
-#sign-in-container {
-  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .3);
-  display: none;
-  z-index: 9;
 }
 
 #profile-display {
@@ -27,10 +20,14 @@ span.non-active:hover {
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   #brand-logo,
-  #profile-picture,
-  #sign-in-brand-logo {
+  #profile-picture {
     height: 75px;
     width: auto;
+  }
+
+  #sign-in-brand-logo {
+    height: auto;
+    width: 25%;
   }
 
   #sign-in,

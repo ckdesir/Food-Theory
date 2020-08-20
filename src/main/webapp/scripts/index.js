@@ -36,7 +36,6 @@ window.onload = function () {
 function main() {
   firebase.initializeApp(firebaseConstants.FIREBASE_CONFIG);
   detectSignedInUser();
-  firebaseConstants.INITALIZE_SIGN_IN();
   addToLandingCarousel();
   autoComplete.addAutoCompleteEventListener(eventListenerFunction);
   autoCompleteConstants.ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE();
@@ -150,7 +149,7 @@ function addOnClickListenerToElements() {
     $('#sign-in-container').hide();
   });
   $('#sign-in').click(() => {
-    $('#sign-in-container').show();
+    window.location.href = 'signin.html?redirect=index.html';
   });
   $('#sign-out').click(() => {
     firebase.auth().signOut().then(() => {

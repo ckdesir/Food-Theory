@@ -1,4 +1,4 @@
-import * as logInConstants from './autocompleteconstants.js';
+import * as firebaseConstants from './firebaseconstants.js'
 
 /**
  * This waits until the webpage loads and then it calls the
@@ -8,18 +8,9 @@ window.onload = function () { main(); }
 
 
 /**
- * function main() handles log-in once the sign-in button is clicked.
+ * function main() handles sign-in.
  */
 function main() {
-  addToLandingCarousel();
-  autoComplete.addAutoCompleteEventListener(eventListenerFunction);
-  autoCompleteConstants.ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE();
-  $('#greeting-message-button').click(() => {
-    $('#greeting-message').hide();
-    $('#selections').show();
-  });
-  $('#selections-close').click(() => {
-    $('#selections').hide();
-    $('#greeting-message').show();
-  });
+  firebase.initializeApp(firebaseConstants.FIREBASE_CONFIG);
+  firebaseConstants.INITALIZE_SIGN_IN((new URL(window.location)).searchParams.get('redirect'));
 }
