@@ -25,11 +25,6 @@ span.non-active:hover {
     width: auto;
   }
 
-  #sign-in-brand-logo {
-    height: auto;
-    width: 25%;
-  }
-
   #sign-in,
   #sign-out {
     color: #fff;

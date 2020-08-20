@@ -1,0 +1,74 @@
+#sign-out {
+  display: inline;
+}
+
+a,
+a:focus,
+a:hover,
+p,
+button {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+html,
+body {
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+}
+
+.btn-xl {
+  border-radius: 0.3rem;
+  line-height: 1.5;
+  padding: 0.5rem 1rem;
+}
+
+p {
+  font-size: 16px;
+}
+
+button {
+  color: #fff;
+  font-size: 16px;
+}
+
+.imgwrap {
+  margin: auto;
+  width: 50%;
+}
+
+.imgwrap img {
+  display: block;
+  height: auto; 
+  margin: auto;
+  width: 100%;
+}
+
+#navigation {
+  display: none;
+}
+
+#refresh-message {
+  display: none;
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  p {
+    font-size: 20px;
+  }
+
+  .imgwrap {
+    margin: auto;
+    width: 25%;
+  }
+
+  .imgwrap img {
+    display: block;
+    height: auto; 
+    margin: auto;
+    max-width: 500px;
+    width: 100%;
+  }
+}

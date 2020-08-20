@@ -30,8 +30,8 @@ window.onload = function () {
 
 /**
  * function main() adds pictures to the carousel, initializes an AutoComplete
- * object, prepares the UI for signing in, adds onClickListeners to
- * some elements on the main page, and detects whether a user is signed in;
+ * object, adds onClickListeners to some elements on the main page, 
+ * and detects whether a user is signed in;
  */
 function main() {
   firebase.initializeApp(firebaseConstants.FIREBASE_CONFIG);
@@ -154,7 +154,7 @@ function addOnClickListenerToElements() {
   $('#sign-out').click(() => {
     firebase.auth().signOut().then(() => {
       window.location.reload();
-    })
+    });
   });
 }
 
