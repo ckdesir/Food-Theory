@@ -1,0 +1,84 @@
+label[for='autocomplete'],
+label[for='autocomplete-places'] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.center-container {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+
+#selections {
+  background-color: white;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.3);
+  display: none;
+  z-index: 8;
+}
+
+#selection-container {
+  overflow-x: auto;
+}
+
+.im2 {
+  font-size: 32px;
+}
+
+.rate-base-layer {
+  color: #aaa;
+}
+
+.rate-hover-layer {
+  color: gray;
+}
+
+.rate-select-layer {
+  color: black;
+}
+
+.rating-container-label {
+  float: left;
+  margin: 5px 10px 5px 10px;
+  position: absolute;
+}
+
+.session-id-input {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  vertical-align: middle;
+}
+
+#autocomplete-places,
+#autocomplete-places:hover,
+#autocomplete-places:focus {
+  background-image: url(../images/location-arrow-solid.svg);
+}
+
+#autocomplete,
+#autocomplete:hover,
+#autocomplete:focus {
+  background-image: url(../images/utensils-solid.svg);
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  #selections {
+    background-color: white;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 8;
+  }
+  .center-container {
+    position: absolute;
+    width: 50%;
+  }
+}

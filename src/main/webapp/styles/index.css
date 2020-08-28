@@ -38,34 +38,6 @@ button {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-label[for='autoComplete'] {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-#selections {
-  background-color: white;
-  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.3);
-  display: none;
-  z-index: 8;
-}
-
-.center-container {
-  position: absolute;
-  width: 100%;
-  height: auto;
-}
-
-#selection-container {
-  overflow-x: auto;
-}
-
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   p,
@@ -74,15 +46,5 @@ label[for='autoComplete'] {
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
     font-weight: 600;
-  }
-  #selections {
-    background-color: white;
-    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.3);
-    display: none;
-    z-index: 8;
-  }
-  .center-container {
-    position: absolute;
-    width: 40%;
   }
 }

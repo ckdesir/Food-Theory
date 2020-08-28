@@ -40,7 +40,7 @@ class AutoComplete {
     placeHolder = '',
     resultsList = {
       render: false,
-      destination: document.querySelector('#autoComplete'),
+      destination: document.querySelector('#autocomplete'),
       position: 'afterend',
       element: 'ul',
     },
@@ -54,7 +54,7 @@ class AutoComplete {
     data = {
       src: [],
     },
-    selector = '#autoComplete',
+    selector = '#autocomplete',
     threshold = 0,
     searchEngine = 'strict'
   ) {

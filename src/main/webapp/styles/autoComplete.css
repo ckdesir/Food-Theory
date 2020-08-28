@@ -5,12 +5,12 @@
  * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
  */
 
-#autoComplete_wrapper {
+#autocomplete_wrapper {
   position: relative;
   display: inline-block;
 }
 
-#autoComplete {
+.autocomplete {
   position: relative;
   padding: 0 2rem 0 3.5rem;
   height: 2.1rem;
@@ -21,7 +21,6 @@
   border: 0.05rem solid #000000;
   caret-color: #000000;
   color: rgba(0, 0, 0, 0);
-  background-image: url(../images/magnifier.svg);
   background-repeat: no-repeat;
   background-size: 1.2rem;
   background-origin: border-box;
@@ -31,18 +30,18 @@
   text-overflow: ellipsis;
 }
 
-#autoComplete::placeholder {
+.autocomplete::placeholder {
   color: rgba(0, 0, 0, 0);
   transition: all 0.3s ease;
 }
 
-#autoComplete:hover::placeholder {
+.autocomplete:hover::placeholder {
   color: rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   -webkit-transition: all -webkit-transform 0.3s ease;
 }
 
-#autoComplete:focus::placeholder {
+.autocomplete:focus::placeholder {
   padding: 0.1rem 0.6rem;
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.3);
@@ -50,45 +49,43 @@
   -webkit-transition: all -webkit-transform 0.3s ease;
 }
 
-#autoComplete::selection {
+.autocomplete::selection {
   color: transparent;
 }
 
-#autoComplete:focus::selection {
+.autocomplete:focus::selection {
   color: #fff;
   background-color: rgba(0, 0, 0, 1);
 }
 
-#autoComplete:hover {
+.autocomplete:hover {
   padding: 0 2rem 0 3.5rem;
   color: rgba(0, 0, 0, 1);
   height: 3rem;
   width: 16.5rem;
-  background-image: url(../images/magnifier.svg);
   background-size: 1.7rem;
   background-position: left 1.05rem top 0.7rem;
   transition: all 0.3s ease;
   -webkit-transition: all -webkit-transform 0.3s ease;
 }
 
-#autoComplete:focus {
+.autocomplete:focus {
   padding: 0 2rem 0 3.5rem;
   color: rgba(0, 0, 0, 1);
   height: 3rem;
   width: 16.5rem;
   border: 0.05rem solid #000000;
-  background-image: url(../images/magnifier.svg);
   background-size: 1.5rem;
   background-position: left 1.05rem top 0.8rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0 0 20px 5px;
 }
 
-#autoComplete_list {
-  position: fixed;
+#autocomplete-list {
+  position: absolute;
   z-index: 1000;
   padding: 0;
   left: 0;
-  right: 0;
+  right: 6rem;
   margin-top: 0;
   margin-left: auto;
   margin-right: auto;
@@ -158,10 +155,10 @@
 }
 
 @media only screen and (max-width: 600px) {
-  #autoComplete {
+  .autocomplete {
     width: 5rem;
   }
-  #autoComplete:focus {
+  .autocomplete:focus {
     width: 11rem;
     background-size: 1.6rem;
     background-position: left 1.1rem top 0.75rem;
@@ -178,28 +175,28 @@
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  #autoComplete {
+  .autocomplete {
     border-width: 1px;
   }
-  #autoComplete:hover {
+  .autocomplete:hover {
     border-width: 1px;
   }
-  #autoComplete:focus {
+  .autocomplete:focus {
     border-width: 1px;
   }
 }
 
 @-moz-document url-prefix() {
-  #autoComplete {
+  .autocomplete {
     border-width: 1px;
     background-size: 1.2rem;
     background-origin: border-box;
     background-position: center;
   }
-  #autoComplete:hover {
+  .autocomplete:hover {
     border-width: 1px;
   }
-  #autoComplete:focus {
+  .autocomplete:focus {
     border-width: 1px;
     background-position: left 1.1rem top 0.8rem;
   }
