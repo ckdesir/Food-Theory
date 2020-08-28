@@ -42,9 +42,6 @@ button {
 @media only screen and (min-width: 768px) {
   p,
   #greeting-message-button {
-    color: #fff;
-    font-family: 'Open Sans', sans-serif;
     font-size: 20px;
-    font-weight: 600;
   }
 }

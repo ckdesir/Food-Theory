@@ -59,14 +59,9 @@ button {
     font-size: 20px;
   }
   .imgwrap {
-    margin: auto;
     width: 25%;
   }
   .imgwrap img {
-    display: block;
-    height: auto;
-    margin: auto;
     max-width: 500px;
-    width: 100%;
   }
 }

@@ -19,6 +19,11 @@ const autoComplete = new AutoComplete(
   selectionsConstants.AUTOCOMPLETE_ON_SELECTION
 );
 
+/**
+ * Represents the auto complete for locations around the world, utilizes
+ * Google's Places API.
+ * @type {google.maps.places.Autocomplete}
+ */
 let autoCompletePlaces;
 
 /**
@@ -29,6 +34,7 @@ $(document).ready(function () {
   selectionsConstants.ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE();
   buildRatingContainer();
   initPlacesAutoComplete();
+  $('[data-toggle="tooltip"]').tooltip(); 
 });
 
 /**
@@ -55,12 +61,6 @@ function initPlacesAutoComplete() {
     document.getElementById('autocomplete-places'),
     { types: ['geocode'] }
   );
-  // // Avoid paying for data that you don't need by restricting the set of
-  // // place fields that are returned to just the address components.
-  // autoCompletePlaces.setFields(['address_component']);
-  // // When the user selects an address from the drop-down, populate the
-  // // address fields in the form.
-  // autocomplete.addListener('place_changed', fillInAddress);
 }
 
 /**

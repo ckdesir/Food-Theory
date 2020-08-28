@@ -114,28 +114,64 @@
         </button>
         <div class="container">
           <div class="p-2 mt-3">
-            <input id="autocomplete" class="autocomplete" type="text" 
-              tabindex="0"/>
-              <ul id="autocomplete-list"></ul>
-            <input id="autocomplete-places" class="autocomplete" type="text" 
-              placeholder="Enter locations if searching by place!"/>
+            <input
+              id="autocomplete"
+              class="autocomplete"
+              type="text"
+              tabindex="0"
+            />
+            <ul id="autocomplete-list"></ul>
+            <input
+              id="autocomplete-places"
+              class="autocomplete"
+              type="text"
+              placeholder="Enter locations if searching by place!"
+            />
           </div>
           <div id="selection-container"></div>
         </div>
-        <div id="rating-container" class="card container mt-3 mb-3 
-          d-flex align-items-center justify-content-center">
-            <div class="p-3">
-              <h4 class="float-left">Proximity:</h1>
-              <div class="float-left ml-2" id="ratingProximity"></div>
-            </div>
-            <div class="p-3">
-              <h4 class="float-left">Popularity:</h1>
-              <div class="float-left ml-2" id="ratingPopularity"></div>
-            </div>
-            <div class="p-3">
-              <h4 class="float-left">Cost:</h1>
-              <div class="float-left ml-2" id="ratingCost"></div>
-            </div>
+        <div
+          id="rating-container"
+          class="card container mt-3 mb-3 d-flex align-items-center justify-content-center"
+        >
+          <div class="p-3">
+            <h4
+              class="float-left"
+              data-toggle="tooltip"
+              title="Prefrence 
+                for proximity is represented here, if you want places closer 
+                to you to be given, rate this category higher!"
+            >
+              Proximity:
+            </h4>
+            <div class="float-left ml-2" id="ratingProximity"></div>
+          </div>
+          <div class="p-3">
+            <h4
+              class="float-left"
+              data-toggle="tooltip"
+              title="Prefrence for 
+                popularity is represented here, if you want places that are more 
+                popular (as determined by their aggregate ratings), rate this 
+                category higher!"
+            >
+              Popularity:
+            </h4>
+            <div class="float-left ml-2" id="ratingPopularity"></div>
+          </div>
+          <div class="p-3">
+            <h4
+              class="float-left"
+              data-toggle="tooltip"
+              title="Prefrence for cost is 
+                  represented here, if you want places that are more 
+                  cost-sensitive rate this category lower! A higher rating 
+                  favors higher-end places."
+            >
+              Cost:
+            </h4>
+            <div class="float-left ml-2" id="ratingCost"></div>
+          </div>
         </div>
         <div class="mb-3 container">
           <input
@@ -143,15 +179,20 @@
             class="custom-control-input ml-1"
             id="food-inclusive-or-check"
           />
-          <label class="custom-control-label" for="food-inclusive-or-check">
+          <label
+            class="custom-control-label"
+            for="food-inclusive-or-check"
+          >
             Find resturants that include ALL foods/cuisines selected</label
           >
         </div>
         <div class="mb-3">
           <button type="button" class="btn btn-outline-secondary mr-1">
-            Find near me</button>
+            Find near me
+          </button>
           <button type="button" class="btn btn-outline-secondary ml-1">
-            Search by place</button>
+            Search by place
+          </button>
         </div>
       </div>
       <div class="container center-container" id="greeting-message">

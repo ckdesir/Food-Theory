@@ -71,14 +71,7 @@ label[for='autocomplete-places'] {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  #selections {
-    background-color: white;
-    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.3);
-    display: none;
-    z-index: 8;
-  }
   .center-container {
-    position: absolute;
     width: 50%;
   }
 }
