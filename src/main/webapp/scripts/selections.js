@@ -27,6 +27,13 @@ const autoComplete = new AutoComplete(
 let autoCompletePlaces;
 
 /**
+ * Represents the PlaceResult object of the place selected by the user. Defines
+ * information about a place.
+ * @type {google.maps.places.PlaceResult}
+ */
+let place;
+
+/**
  * Initializes an AutoComplete object and builds the rating container.
  */
 $(document).ready(function () {
@@ -34,7 +41,29 @@ $(document).ready(function () {
   selectionsConstants.ADD_KEY_UP_EVENT_LISTENER_AUTOCOMPLETE();
   buildRatingContainer();
   initPlacesAutoComplete();
-  $('[data-toggle="tooltip"]').tooltip(); 
+  $('[data-toggle="tooltip"]').tooltip();
+  $('#near-me').click(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        window.location.href = 
+            'results.html?longitude='+ position.coords.longitude + '&latitude' +
+            '=' + position.coords.latitude;
+      }, (error) => {
+        if(error.code === error.PERMISSION_DENIED) {
+          $('.toast').toast('show');
+        }
+      });
+    };
+  });
+  $('#by-place').click(() => {
+    if(place) {
+      window.location.href = 'results.html?longitude=' + 
+          place.geometry.location.lng() + '&latitude=' + 
+          place.geometry.location.lat();
+    } else {
+      $('.toast').toast('show');
+    }
+  })
 });
 
 /**
@@ -61,6 +90,9 @@ function initPlacesAutoComplete() {
     document.getElementById('autocomplete-places'),
     { types: ['geocode'] }
   );
+  autoCompletePlaces.addListener('place_changed', () => {
+    place = autoCompletePlaces.getPlace();
+  });
 }
 
 /**

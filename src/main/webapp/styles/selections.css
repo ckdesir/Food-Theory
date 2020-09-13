@@ -69,6 +69,10 @@ label[for='autocomplete-places'] {
   background-image: url(../images/utensils-solid.svg);
 }
 
+.toast {
+  z-index: 9;
+}
+
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .center-container {

@@ -134,6 +134,18 @@
           id="rating-container"
           class="card container mt-3 mb-3 d-flex align-items-center justify-content-center"
         >
+          <div id="toast" class="toast position-absolute bg-white" role="alert" 
+            aria-live="polite" aria-atomic="true" data-delay="5000">
+              <div role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                  Location Required
+                </div>
+                <div class="toast-body">
+                  Make sure to either enable location permissions or look for 
+                  a place in the search above in order to use Food Theory!
+                </div>
+              </div>
+          </div>
           <div class="p-3">
             <h4
               class="float-left"
@@ -187,10 +199,10 @@
           >
         </div>
         <div class="mb-3">
-          <button type="button" class="btn btn-outline-secondary mr-1">
+          <button type="button" id="near-me" class="btn btn-outline-secondary mr-1">
             Find near me
           </button>
-          <button type="button" class="btn btn-outline-secondary ml-1">
+          <button type="button" id="by-place" class="btn btn-outline-secondary ml-1">
             Search by place
           </button>
         </div>
