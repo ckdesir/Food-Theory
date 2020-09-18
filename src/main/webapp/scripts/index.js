@@ -155,4 +155,4 @@ function addOnClickListenerToElements() {
   });
 }
 
-export { addToLandingCarousel, buildCarouselDiv, buildCarouselCaption };
+export { addToLandingCarousel, buildCarouselDiv, buildCarouselCaption, detectSignedInUser };
